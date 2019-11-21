@@ -89,11 +89,12 @@ namespace WebApplication
             if(user == null)
             {
                 user = new ApplicationUser();
+                user.UserName = "superadmin@mywebapp.com";
                 user.Email = "superadmin@mywebapp.com";
-                user.UserName = "SuperAdmin";
                 user.FirstName = "Administrator";
                 user.LastName = "Super";
-                var createUserResult = await userManager.CreateAsync(user, "@Dmin123456");
+                user.EmailConfirmed = true;
+                var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
                 if (createUserResult.Succeeded)
                 {
                     await userManager.AddToRoleAsync(user, "SuperAdmin");
