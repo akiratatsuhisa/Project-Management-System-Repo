@@ -18,8 +18,16 @@ namespace WebApplication.Models
         [Required]
         public string LastName { get; set; }
 
+        [PersonalData]
+        public bool Gender { get; set; }
+
         [Column(TypeName = "date")]
         [PersonalData]
         public DateTime? BirthDate { get; set; }
+
+        public virtual Lecturer Lecturer { get; set; }
+
+        public virtual Student Student { get; set; }
+
     }
 }

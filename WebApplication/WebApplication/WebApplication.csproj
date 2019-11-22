@@ -8,6 +8,16 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20191121133906_UpdateTableUser.cs" />
     <Compile Remove="Data\Migrations\20191121133906_UpdateTableUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191121140722_UpdateTableUser.cs" />
+    <Compile Remove="Data\Migrations\20191121140722_UpdateTableUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122123709_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122123709_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122125026_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122125026_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122125641_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122125641_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122131406_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122131406_InitTable.Designer.cs" />
   </ItemGroup>
 
 

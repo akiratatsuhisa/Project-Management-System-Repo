@@ -10,8 +10,8 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191121140722_UpdateTableUser")]
-    partial class UpdateTableUser
+    [Migration("20191122132132_InitTable")]
+    partial class InitTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,6 +182,9 @@ namespace WebApplication.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Gender")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -232,6 +235,69 @@ namespace WebApplication.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("WebApplication.Models.Faculty", b =>
+                {
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("smallint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Faculties");
+                });
+
+            modelBuilder.Entity("WebApplication.Models.Lecturer", b =>
+                {
+                    b.Property<string>("LecturerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<short>("FacultyId")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("IsManager")
+                        .HasColumnType("bit");
+
+                    b.HasKey("LecturerId");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("Lecturers");
+                });
+
+            modelBuilder.Entity("WebApplication.Models.Student", b =>
+                {
+                    b.Property<string>("StudentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<short>("FacultyId")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("LecturerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StudentCode")
+                        .IsRequired()
+                        .HasColumnType("char(10)");
+
+                    b.HasKey("StudentId");
+
+                    b.HasIndex("FacultyId");
+
+                    b.HasIndex("LecturerId");
+
+                    b.HasIndex("StudentCode")
+                        .IsUnique();
+
+                    b.ToTable("Students");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -279,6 +345,42 @@ namespace WebApplication.Data.Migrations
                     b.HasOne("WebApplication.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WebApplication.Models.Lecturer", b =>
+                {
+                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication.Models.ApplicationUser", "ApplicationUser")
+                        .WithOne("Lecturer")
+                        .HasForeignKey("WebApplication.Models.Lecturer", "LecturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WebApplication.Models.Student", b =>
+                {
+                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication.Models.Lecturer", "Lecturer")
+                        .WithMany()
+                        .HasForeignKey("LecturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication.Models.ApplicationUser", "ApplicationUser")
+                        .WithOne("Student")
+                        .HasForeignKey("WebApplication.Models.Student", "StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
