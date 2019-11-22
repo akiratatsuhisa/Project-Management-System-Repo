@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Models
 {
-    public class Faculty
+    public class SpecializedFaculty
     {
         public short Id { get; set; }
 
@@ -14,10 +14,8 @@ namespace WebApplication.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public virtual ICollection<SpecializedFaculty> SpecializedFaculties { get; set; }
-   
-        public virtual ICollection<Student> Students { get; set; }
-        
-        public virtual ICollection<Lecturer> Lecturers { get; set; }
+        public short FacultyId { get; set; }
+
+        public virtual Faculty Faculty { get; set; }
     }
 }

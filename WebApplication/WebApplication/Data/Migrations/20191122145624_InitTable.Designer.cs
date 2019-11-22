@@ -10,7 +10,7 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191122132132_InitTable")]
+    [Migration("20191122145624_InitTable")]
     partial class InitTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -164,7 +164,7 @@ namespace WebApplication.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("BirthDate")
+                    b.Property<DateTime>("BirthDate")
                         .HasColumnType("date");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -180,14 +180,16 @@ namespace WebApplication.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
 
                     b.Property<bool>("Gender")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -270,6 +272,28 @@ namespace WebApplication.Data.Migrations
                     b.ToTable("Lecturers");
                 });
 
+            modelBuilder.Entity("WebApplication.Models.SpecializedFaculty", b =>
+                {
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("smallint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<short>("FacultyId")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("SpecializedFaculties");
+                });
+
             modelBuilder.Entity("WebApplication.Models.Student", b =>
                 {
                     b.Property<string>("StudentId")
@@ -279,7 +303,6 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("smallint");
 
                     b.Property<string>("LecturerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("StudentCode")
@@ -352,7 +375,7 @@ namespace WebApplication.Data.Migrations
             modelBuilder.Entity("WebApplication.Models.Lecturer", b =>
                 {
                     b.HasOne("WebApplication.Models.Faculty", "Faculty")
-                        .WithMany()
+                        .WithMany("Lecturers")
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -364,19 +387,26 @@ namespace WebApplication.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApplication.Models.SpecializedFaculty", b =>
+                {
+                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
+                        .WithMany("SpecializedFaculties")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("WebApplication.Models.Student", b =>
                 {
                     b.HasOne("WebApplication.Models.Faculty", "Faculty")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WebApplication.Models.Lecturer", "Lecturer")
-                        .WithMany()
-                        .HasForeignKey("LecturerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Students")
+                        .HasForeignKey("LecturerId");
 
                     b.HasOne("WebApplication.Models.ApplicationUser", "ApplicationUser")
                         .WithOne("Student")

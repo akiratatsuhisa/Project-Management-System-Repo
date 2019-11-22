@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace WebApplication.Models
         [ForeignKey("ApplicationUser")]
         public string LecturerId { get; set; }
 
+        [Required]
         public short FacultyId { get; set; }
 
         public bool IsManager { get; set; }
@@ -19,5 +21,7 @@ namespace WebApplication.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual Faculty Faculty { get; set; }
+
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

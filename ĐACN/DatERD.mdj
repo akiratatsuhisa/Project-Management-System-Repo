@@ -3070,7 +3070,7 @@
 							},
 							"name": "FirstName",
 							"type": "NVARCHAR",
-							"length": "50"
+							"length": "256"
 						},
 						{
 							"_type": "ERDColumn",
@@ -3080,7 +3080,7 @@
 							},
 							"name": "LastName",
 							"type": "NVARCHAR",
-							"length": "50"
+							"length": "256"
 						},
 						{
 							"_type": "ERDColumn",

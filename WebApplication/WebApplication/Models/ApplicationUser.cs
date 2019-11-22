@@ -12,10 +12,12 @@ namespace WebApplication.Models
     {
         [PersonalData]
         [Required]
+        [StringLength(256)]
         public string FirstName { get; set; }
 
         [PersonalData]
         [Required]
+        [StringLength(256)]
         public string LastName { get; set; }
 
         [PersonalData]
@@ -23,7 +25,9 @@ namespace WebApplication.Models
 
         [Column(TypeName = "date")]
         [PersonalData]
-        public DateTime? BirthDate { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; }
 
         public virtual Lecturer Lecturer { get; set; }
 

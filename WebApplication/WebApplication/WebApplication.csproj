@@ -18,6 +18,10 @@
     <Compile Remove="Data\Migrations\20191122125641_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191122131406_InitTable.cs" />
     <Compile Remove="Data\Migrations\20191122131406_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122132132_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122132132_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122145129_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122145129_InitTable.Designer.cs" />
   </ItemGroup>
 
 

@@ -11,11 +11,13 @@ namespace WebApplication.Data.Migrations
                 name: "BirthDate",
                 table: "AspNetUsers",
                 type: "date",
-                nullable: true);
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
                 name: "FirstName",
                 table: "AspNetUsers",
+                maxLength: 256,
                 nullable: false,
                 defaultValue: "");
 
@@ -28,6 +30,7 @@ namespace WebApplication.Data.Migrations
             migrationBuilder.AddColumn<string>(
                 name: "LastName",
                 table: "AspNetUsers",
+                maxLength: 256,
                 nullable: false,
                 defaultValue: "");
 
@@ -70,12 +73,32 @@ namespace WebApplication.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SpecializedFaculties",
+                columns: table => new
+                {
+                    Id = table.Column<short>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 256, nullable: false),
+                    FacultyId = table.Column<short>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpecializedFaculties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SpecializedFaculties_Faculties_FacultyId",
+                        column: x => x.FacultyId,
+                        principalTable: "Faculties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
                     StudentId = table.Column<string>(nullable: false),
                     FacultyId = table.Column<short>(nullable: false),
-                    LecturerId = table.Column<string>(nullable: false),
+                    LecturerId = table.Column<string>(nullable: true),
                     StudentCode = table.Column<string>(type: "char(10)", nullable: false)
                 },
                 constraints: table =>
@@ -92,7 +115,7 @@ namespace WebApplication.Data.Migrations
                         column: x => x.LecturerId,
                         principalTable: "Lecturers",
                         principalColumn: "LecturerId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Students_AspNetUsers_StudentId",
                         column: x => x.StudentId,
@@ -104,6 +127,11 @@ namespace WebApplication.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Lecturers_FacultyId",
                 table: "Lecturers",
+                column: "FacultyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SpecializedFaculties_FacultyId",
+                table: "SpecializedFaculties",
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
@@ -125,6 +153,9 @@ namespace WebApplication.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "SpecializedFaculties");
+
             migrationBuilder.DropTable(
                 name: "Students");
 

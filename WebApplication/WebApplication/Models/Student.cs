@@ -15,7 +15,6 @@ namespace WebApplication.Models
         [Required]
         public short FacultyId { get; set; }
 
-        [Required]
         public string LecturerId { get; set; }
 
         [Column(TypeName ="char(10)")]

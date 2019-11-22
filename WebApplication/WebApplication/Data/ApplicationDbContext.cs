@@ -11,9 +11,12 @@ namespace WebApplication.Data
     {
         public virtual DbSet<Faculty> Faculties { get; set; }
 
+        public virtual DbSet<SpecializedFaculty> SpecializedFaculties { get; set; }
+
         public virtual DbSet<Student> Students { get; set; }
 
         public virtual DbSet<Lecturer> Lecturers { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
