@@ -35,7 +35,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize("Admin, Student")]
         public async Task<IActionResult> Test()
         {
             var user = await _userManager.GetUserAsync(User);
