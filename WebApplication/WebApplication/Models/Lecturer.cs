@@ -13,15 +13,17 @@ namespace WebApplication.Models
         [ForeignKey("ApplicationUser")]
         public string LecturerId { get; set; }
 
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
         [Required]
         public short FacultyId { get; set; }
 
-        public bool IsManager { get; set; }
-
-        public virtual ApplicationUser ApplicationUser { get; set; }
-
         public virtual Faculty Faculty { get; set; }
 
+        public bool IsManager { get; set; }
+
         public virtual ICollection<Student> Students { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }

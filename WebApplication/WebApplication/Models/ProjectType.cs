@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Models
 {
-    public class SpecializedFaculty
+    public class ProjectType
     {
         public short Id { get; set; }
 
@@ -14,9 +14,7 @@ namespace WebApplication.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public short FacultyId { get; set; }
-
-        public virtual Faculty Faculty { get; set; }
+        public bool IsDisabled { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
     }

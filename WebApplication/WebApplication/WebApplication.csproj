@@ -22,6 +22,16 @@
     <Compile Remove="Data\Migrations\20191122132132_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191122145129_InitTable.cs" />
     <Compile Remove="Data\Migrations\20191122145129_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191122145624_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191122145624_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191202085022_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191202085022_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191202085419_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191202085419_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191202085913_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191202085913_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191202090533_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191202090533_InitTable.Designer.cs" />
   </ItemGroup>
 
 
