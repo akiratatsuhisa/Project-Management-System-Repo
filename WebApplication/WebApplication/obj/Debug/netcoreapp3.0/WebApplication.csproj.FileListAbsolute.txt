@@ -307,3 +307,4 @@ C:\Users\DELL\Documents\Projects-Management-System-Repo\WebApplication\WebApplic
 C:\Users\DELL\Documents\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.dll
 C:\Users\DELL\Documents\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.pdb
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Shared\_SideBarPartial.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Home\Index.cshtml.g.cs
