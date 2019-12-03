@@ -1,41 +1,59 @@
 ﻿@model IEnumerable<WebApplication.Models.ProjectType>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Project Types";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDisabled)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDisabled)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">Danh sách loại đồ án</h3>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success" asp-action="Create">
+                    Tạo mới loại đồ án
+                </a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsDisabled)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsDisabled)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Chi tiết" class="btn btn-info">
+                                            <i class="material-icons">info</i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Xoá" class="btn btn-danger">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,37 +1,53 @@
 ﻿@model WebApplication.Models.ProjectType
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Project Type - " + Model.Id;
 }
 
-<h1>Edit</h1>
-
-<h4>ProjectType</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">Sửa loại sản phẩm - @Model.Id</h3>
+                <p class="card-subtitle"></p>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsDisabled" /> @Html.DisplayNameFor(model => model.IsDisabled)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+            <div class="card-body">
 
-<div>
-    <a asp-action="Index">Back to List</a>
+                <form method="post" asp-action="Create">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label asp-for="Name" class="bmd-label-floating"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="form-check-label" asp-for="IsDisabled">
+                                        <input asp-for="IsDisabled" class="form-check-input" />
+                                        @Html.DisplayNameFor(model => model.IsDisabled)
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <span asp-validation-for="IsDisabled" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Sửa</button>
+                            <a class="btn btn-outline-primary" asp-action="Index">Quay lại</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {

@@ -1,30 +1,36 @@
 ﻿@model WebApplication.Models.ProjectType
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details Project Type - " + Model.Id;
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>ProjectType</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsDisabled)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsDisabled)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">Chi tiết loại sản phẩm - @Model.Id</h3>
+                <p class="card-subtitle"></p>
+            </div>
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsDisabled)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IsDisabled)
+                    </dd>
+                </dl>
+                <div>
+                    <a class="btn btn-outline-success" asp-action="Edit">Sửa</a>
+                    <a class="btn btn-outline-primary" asp-action="Index">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
