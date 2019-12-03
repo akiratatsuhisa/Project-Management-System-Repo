@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\1203\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
+    "C:\\Users\\DELL\\Documents\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
   },
   "projects": {
-    "D:\\1203\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
+    "C:\\Users\\DELL\\Documents\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\1203\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Documents\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
         "projectName": "WebApplication",
-        "projectPath": "D:\\1203\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "packagesPath": "C:\\Users\\minhk\\.nuget\\packages\\",
-        "outputPath": "D:\\1203\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\Documents\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Documents\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\minhk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
