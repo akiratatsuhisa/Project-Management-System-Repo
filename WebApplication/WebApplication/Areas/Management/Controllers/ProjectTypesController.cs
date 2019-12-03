@@ -12,7 +12,7 @@ using WebApplication.Models;
 namespace WebApplication.Areas.Management.Controllers
 {
     [Area("Management")]
-    [Authorize(Roles ="Employee")]
+    [Authorize(Roles = "Employee")]
     public class ProjectTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
