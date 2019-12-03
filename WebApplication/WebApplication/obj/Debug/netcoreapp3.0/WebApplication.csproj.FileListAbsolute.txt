@@ -151,3 +151,4 @@ C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_Layout.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Shared\_Layout.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_LoginPartial.cshtml.g.cs
