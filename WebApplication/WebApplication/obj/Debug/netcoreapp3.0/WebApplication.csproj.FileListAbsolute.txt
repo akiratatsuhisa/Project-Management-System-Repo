@@ -140,3 +140,11 @@ C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\ProjectTypes\Create.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\ProjectTypes\Delete.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\ProjectTypes\Details.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\ProjectTypes\Edit.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\ProjectTypes\Index.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\_ValidationScriptsPartial.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\_ViewImports.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\_ViewStart.cshtml.g.cs

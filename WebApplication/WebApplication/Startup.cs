@@ -63,6 +63,9 @@ namespace WebApplication
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
@@ -86,7 +89,7 @@ namespace WebApplication
                 }
             }
             ApplicationUser user = await userManager.FindByEmailAsync("superadmin@mywebapp.com");
-            if(user == null)
+            if (user == null)
             {
                 user = new ApplicationUser();
                 user.UserName = "superadmin@mywebapp.com";
@@ -97,6 +100,7 @@ namespace WebApplication
                 var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
                 if (createUserResult.Succeeded)
                 {
+                    await userManager.AddToRoleAsync(user, "Employee");
                     await userManager.AddToRoleAsync(user, "SuperAdmin");
                 }
             }
