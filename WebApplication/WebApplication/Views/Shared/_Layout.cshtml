@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="~/assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="~/assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="landing-page sidebar-collapse">
@@ -79,7 +77,7 @@
     </div>
     <div class="main main-raised">
         <div class="container">
-          @RenderBody()
+            @RenderBody()
         </div>
     </div>
     <footer class="footer footer-default">
@@ -130,6 +128,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="~/assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
