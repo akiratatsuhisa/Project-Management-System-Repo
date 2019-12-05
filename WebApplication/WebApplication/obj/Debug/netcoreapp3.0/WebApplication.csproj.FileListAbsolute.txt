@@ -309,3 +309,6 @@ C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Home\Index.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_NavBarPartial.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Shared\_NavBarPartial.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Create.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Details.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Index.cshtml.g.cs

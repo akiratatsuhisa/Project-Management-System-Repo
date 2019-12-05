@@ -39,7 +39,7 @@ namespace WebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -73,7 +73,7 @@ namespace WebApplication
 
             //Test
             CreateRoles(serviceProvider).Wait();
-            CreateTestUsers(serviceProvider).Wait();
+            CreateTestUsers(serviceProvider, context).Wait();
         }
 
         private async Task CreateRoles(IServiceProvider serviceProvider)
@@ -111,31 +111,14 @@ namespace WebApplication
             }
         }
 
-        private async Task CreateTestUsers(IServiceProvider serviceProvider)
+        private async Task CreateTestUsers(IServiceProvider serviceProvider, ApplicationDbContext context)
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            
-            var email = "hutechstudent@mywebapp.com";
 
-            ApplicationUser user = await userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                user = new ApplicationUser();
-                user.UserName = email;
-                user.Email = email;
-                user.FirstName = "Nhat";
-                user.LastName = "Hong";
-                user.EmailConfirmed = true;
-                var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
-                if (createUserResult.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(user, "Student");
-                }
-            }
 
-            email = "hutechlecturer@mywebapp.com";
-
-            user = await userManager.FindByEmailAsync(email);
+            var email = "hutechlecturer@mywebapp.com";
+            string lecturerId = "";
+            var user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
                 user = new ApplicationUser();
@@ -150,6 +133,30 @@ namespace WebApplication
                     await userManager.AddToRoleAsync(user, "Employee");
                     await userManager.AddToRoleAsync(user, "Lecturer");
                 }
+                lecturerId = user.Id;
+                context.Add(new Lecturer {LecturerId = lecturerId, FacultyId = 1, IsManager = false });
+                await context.SaveChangesAsync();
+
+            }
+
+            email = "hutechstudent@mywebapp.com";
+
+            user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                user = new ApplicationUser();
+                user.UserName = email;
+                user.Email = email;
+                user.FirstName = "Nhat";
+                user.LastName = "Hong";
+                user.EmailConfirmed = true;
+                var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
+                if (createUserResult.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Student");
+                }
+                context.Add(new Student { StudentId = user.Id, FacultyId = 1, StudentCode = "1611061161", LecturerId = lecturerId });
+                await context.SaveChangesAsync();
             }
         }
     }
