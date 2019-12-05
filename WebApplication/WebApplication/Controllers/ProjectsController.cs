@@ -53,11 +53,19 @@ namespace WebApplication.Controllers
         //}
 
         // GET: Projects/Create
+        private Faculty GetStudentFaculty()
+        {
+            var id = _context.Students.Find(_userManager.GetUserId(User)).FacultyId;
+            return _context.Faculties.Find(id);
+        }
+
         public IActionResult Create()
         {
+            var faculty = GetStudentFaculty();
             ViewData["ProjectTypeId"] = new SelectList(_context.ProjectTypes, "Id", "Name");
+            ViewData["FacultyName"] = faculty.Name;
             ViewData["SpecializedFacultyId"] = new SelectList(_context.SpecializedFaculties
-                .Where(sf => sf.FacultyId == _context.Students.Find(User.Identity.Name).FacultyId), "Id", "Name");
+                .Where(sf => sf.FacultyId == faculty.Id), "Id", "Name");
             return View();
         }
 
@@ -70,7 +78,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var lecturerId = _context.Students.Find(User.Identity.Name).LecturerId;
+                var lecturerId = _context.Students.Find(_userManager.GetUserId(User)).LecturerId;
                 var dateTimeNow = DateTime.Now;
                 _context.Add(new Project
                 {
@@ -84,11 +92,13 @@ namespace WebApplication.Controllers
                     Semester = 1
                 });
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("CreatedSuccess",project);
             }
+            var faculty = GetStudentFaculty();
             ViewData["ProjectTypeId"] = new SelectList(_context.ProjectTypes, "Id", "Name", project.ProjectTypeId);
+            ViewData["FacultyId"] = faculty.Name;
             ViewData["SpecializedFacultyId"] = new SelectList(_context.SpecializedFaculties
-                .Where(sf => sf.FacultyId == _context.Students.Find(User.Identity.Name).FacultyId), "Id", "Name", project.SpecializedFacultyId);
+                .Where(sf => sf.FacultyId == faculty.Id), "Id", "Name", project.SpecializedFacultyId);
             return View(project);
         }
     }

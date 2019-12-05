@@ -1,45 +1,57 @@
 ﻿@model WebApplication.Models.ProjectViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Đăng ký đồ án";
 }
 
-<h1>Create</h1>
-
-<h4>Project</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProjectTypeId" class="control-label"></label>
-                <select asp-for="ProjectTypeId" class ="form-control" asp-items="ViewBag.ProjectTypeId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="SpecializedFacultyId" class="control-label"></label>
-                <select asp-for="SpecializedFacultyId" class ="form-control" asp-items="ViewBag.SpecializedFacultyId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="section section-page">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">Đăng kí đồ án môn học</h2>
+            @*<h4 class="text-center description"></h4>*@
+            <form class="contact-form" asp-action="Create">
+                <div class="form-group">
+                    <label asp-for="ProjectTypeId"></label>
+                    <select asp-for="ProjectTypeId" asp-items="ViewBag.ProjectTypeId" class="form-control selectpicker" data-style="btn btn-link"></select>
+                    <span asp-validation-for="ProjectTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="bmd-label-floating"></label>
+                    <input asp-for="Title" class="form-control">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Ngành</label>
+                            <input type="text" class="form-control" value="@ViewBag.FacultyName" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="SpecializedFacultyId"></label>
+                            <select asp-for="SpecializedFacultyId" asp-items="ViewBag.SpecializedFacultyId" class="form-control selectpicker" data-style="btn btn-link"></select>
+                            <span asp-validation-for="SpecializedFacultyId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="bmd-label-floating"></label>
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ml-auto mr-auto text-center">
+                        <button class="btn btn-success btn-raised">
+                            Đăng ký đồ án
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

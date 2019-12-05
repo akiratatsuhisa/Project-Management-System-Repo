@@ -35,13 +35,6 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        [Authorize("Admin, Student")]
-        public async Task<IActionResult> Test()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            return View(user);
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

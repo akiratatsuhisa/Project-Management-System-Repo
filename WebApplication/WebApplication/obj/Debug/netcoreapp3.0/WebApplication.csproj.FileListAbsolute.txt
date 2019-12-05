@@ -132,7 +132,6 @@ C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\bin
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.MvcApplicationPartsAssemblyInfo.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.MvcApplicationPartsAssemblyInfo.cache
-C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Home\Test.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
@@ -312,3 +311,4 @@ C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Create.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Details.cshtml.g.cs
 C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Index.cshtml.g.cs
+C:\Code\Github\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\CreatedSuccess.cshtml.g.cs
