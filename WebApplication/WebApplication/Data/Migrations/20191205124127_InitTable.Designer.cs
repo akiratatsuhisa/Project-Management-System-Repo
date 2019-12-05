@@ -10,7 +10,7 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191202090902_InitTable")]
+    [Migration("20191205124127_InitTable")]
     partial class InitTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,6 +279,9 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -288,6 +291,9 @@ namespace WebApplication.Data.Migrations
 
                     b.Property<short>("ProjectTypeId")
                         .HasColumnType("smallint");
+
+                    b.Property<byte>("Semester")
+                        .HasColumnType("tinyint");
 
                     b.Property<short>("SpecializedFacultyId")
                         .HasColumnType("smallint");

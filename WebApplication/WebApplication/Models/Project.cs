@@ -30,6 +30,13 @@ namespace WebApplication.Models
 
         public byte Status { get; set; }
 
+        [Range(1,2)]
+        public byte Semester { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime CreatedDate { get; set; }
+
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
 
         public virtual ICollection<ProjectSchedule> ProjectSchedules { get; set; }

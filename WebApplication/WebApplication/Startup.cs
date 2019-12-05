@@ -71,7 +71,9 @@ namespace WebApplication
                 endpoints.MapRazorPages();
             });
 
+            //Test
             CreateRoles(serviceProvider).Wait();
+            CreateTestUsers(serviceProvider).Wait();
         }
 
         private async Task CreateRoles(IServiceProvider serviceProvider)
@@ -88,12 +90,15 @@ namespace WebApplication
                     await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-            ApplicationUser user = await userManager.FindByEmailAsync("superadmin@mywebapp.com");
+
+            var email = "superadmin@mywebapp.com";
+
+            ApplicationUser user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
                 user = new ApplicationUser();
-                user.UserName = "superadmin@mywebapp.com";
-                user.Email = "superadmin@mywebapp.com";
+                user.UserName = email;
+                user.Email = email;
                 user.FirstName = "Administrator";
                 user.LastName = "Super";
                 user.EmailConfirmed = true;
@@ -102,6 +107,48 @@ namespace WebApplication
                 {
                     await userManager.AddToRoleAsync(user, "Employee");
                     await userManager.AddToRoleAsync(user, "SuperAdmin");
+                }
+            }
+        }
+
+        private async Task CreateTestUsers(IServiceProvider serviceProvider)
+        {
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            
+            var email = "hutechstudent@mywebapp.com";
+
+            ApplicationUser user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                user = new ApplicationUser();
+                user.UserName = email;
+                user.Email = email;
+                user.FirstName = "Nhat";
+                user.LastName = "Hong";
+                user.EmailConfirmed = true;
+                var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
+                if (createUserResult.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Student");
+                }
+            }
+
+            email = "hutechlecturer@mywebapp.com";
+
+            user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                user = new ApplicationUser();
+                user.UserName = email;
+                user.Email = email;
+                user.FirstName = "Khiem";
+                user.LastName = "Pham";
+                user.EmailConfirmed = true;
+                var createUserResult = await userManager.CreateAsync(user, "A@dmin123456");
+                if (createUserResult.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "Employee");
+                    await userManager.AddToRoleAsync(user, "Lecturer");
                 }
             }
         }

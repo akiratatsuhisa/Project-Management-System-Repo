@@ -149,7 +149,9 @@ namespace WebApplication.Data.Migrations
                     SpecializedFacultyId = table.Column<short>(nullable: false),
                     Title = table.Column<string>(maxLength: 256, nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    Status = table.Column<byte>(nullable: false)
+                    Status = table.Column<byte>(nullable: false),
+                    Semester = table.Column<byte>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
