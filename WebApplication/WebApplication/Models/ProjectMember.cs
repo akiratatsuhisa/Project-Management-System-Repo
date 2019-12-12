@@ -15,9 +15,6 @@ namespace WebApplication.Models
         public string StudentId { get; set; }
 
         public virtual Student Student { get; set; }
-
-        [Required]
-        [Range(0,10)]
-        public float Grade { get; set; }
+        public float? Grade { get; set; }
     }
 }

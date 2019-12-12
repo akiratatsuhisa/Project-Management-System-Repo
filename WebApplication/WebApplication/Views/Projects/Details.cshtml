@@ -1,0 +1,73 @@
+﻿@model WebApplication.Models.Project
+
+@{
+    ViewData["Title"] = "Details";
+    List<ProjectSchedule> projectSchedules = ViewBag.ProjectSchedules;
+}
+
+<div class="section">
+    <div>
+        <h3 class="mx-md-3 mx-1 text-center">
+            @Model.Title
+        </h3>
+        <div class="row">
+            <div class="col-md-3">
+                <hr />
+                <ul class="nav nav-pills nav-pills-primary flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#list-home" data-toggle="tab">Tổng quan</a></li>
+                    @for (var i = 1; i < 11; i++)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="#list-week-@i" data-toggle="tab">Tuần @i</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <hr />
+                <div class="tab-content">
+                    <div class="tab-pane active" id="list-home">
+                        Tên giảng viên: @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+
+                        <div>Mô tả: </div>
+                        <p>
+                            @Model.Description
+                        </p>
+                        <div>Thành viên</div>
+                        @foreach (ProjectMember item in ViewBag.ProjectMembers)
+                        {
+                            <div>Tên: @item.Student.ApplicationUser.LastName  @item.Student.ApplicationUser.FirstName, MSSV: @item.Student.StudentCode</div>
+                        }
+
+                    </div>
+                    @for (var i = 1; i < 11; i++)
+                    {
+                        <div class="tab-pane" id="list-week-@i">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="demand-tab-@i" data-toggle="tab" href="#demand-@i" role="tab" aria-controls="demand-@i" aria-selected="true">Yêu cầu</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="report-tab-@i" data-toggle="tab" href="#report-@i" role="tab" aria-controls="report-@i" aria-selected="false">Báo cáo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="rating-tab-@i" data-toggle="tab" href="#rating-@i" role="tab" aria-controls="rating-@i" aria-selected="false">Điểm</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="demand-@i" role="tabpanel" aria-labelledby="demand-tab-@i">
+                                    Tên tiến trình: @projectSchedules[i - 1].Name
+                                    <hr />
+                                </div>
+                                <div class="tab-pane fade" id="report-@i" role="tabpanel" aria-labelledby="report-tab-@i">
+
+                                </div>
+                                <div class="tab-pane fade" id="rating-@i" role="tabpanel" aria-labelledby="rating-tab-@i">
+                                    Điểm: @projectSchedules[i - 1].Rating
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <a asp-action="Details" asp-route-id="@item.Id">@item.Title</a> 
+}
+

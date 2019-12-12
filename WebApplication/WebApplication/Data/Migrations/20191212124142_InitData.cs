@@ -16,19 +16,29 @@ namespace WebApplication.Data.Migrations
                     { (short)3, false, "Đồ án thực tập" },
                     { (short)4, false, "Đồ án tổng hợp" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "Id", "Description", "LecturerId", "ProjectTypeId", "Status", "Title" },
+                values: new object[] { 1, "", "50717a31-498c-434a-972b-d79c0b9453a7", (short)2, (byte)0, "Hệ thống quản lý đồ án Hutech" });
+
+            migrationBuilder.InsertData(
+                table: "ProjectMembers",
+                columns: new[] { "ProjectId", "StudentId", "Grade" },
+                values: new object[] { 1, "dc291a7b-65b1-4a7f-a7c5-5e8dfef5e122", null });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
-                table: "ProjectTypes",
-                keyColumn: "Id",
-                keyValue: (short)1);
+                table: "ProjectMembers",
+                keyColumns: new[] { "ProjectId", "StudentId" },
+                keyValues: new object[] { 1, "dc291a7b-65b1-4a7f-a7c5-5e8dfef5e122" });
 
             migrationBuilder.DeleteData(
                 table: "ProjectTypes",
                 keyColumn: "Id",
-                keyValue: (short)2);
+                keyValue: (short)1);
 
             migrationBuilder.DeleteData(
                 table: "ProjectTypes",
@@ -39,6 +49,16 @@ namespace WebApplication.Data.Migrations
                 table: "ProjectTypes",
                 keyColumn: "Id",
                 keyValue: (short)4);
+
+            migrationBuilder.DeleteData(
+                table: "Projects",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "ProjectTypes",
+                keyColumn: "Id",
+                keyValue: (short)2);
         }
     }
 }

@@ -126,7 +126,7 @@ namespace WebApplication.Data.Migrations
                 {
                     ProjectId = table.Column<int>(nullable: false),
                     StudentId = table.Column<string>(nullable: false),
-                    Grade = table.Column<float>(nullable: false)
+                    Grade = table.Column<float>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -153,7 +153,7 @@ namespace WebApplication.Data.Migrations
                     ProjectId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     Note = table.Column<string>(nullable: true),
-                    Rating = table.Column<float>(nullable: false),
+                    Rating = table.Column<float>(nullable: true),
                     ExpiredDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

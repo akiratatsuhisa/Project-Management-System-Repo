@@ -10,7 +10,7 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191212120723_InitTable")]
+    [Migration("20191212123749_InitTable")]
     partial class InitTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,7 +292,7 @@ namespace WebApplication.Data.Migrations
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("Grade")
+                    b.Property<float?>("Grade")
                         .HasColumnType("real");
 
                     b.HasKey("ProjectId", "StudentId");
@@ -322,7 +322,7 @@ namespace WebApplication.Data.Migrations
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Rating")
+                    b.Property<float?>("Rating")
                         .HasColumnType("real");
 
                     b.HasKey("Id");

@@ -280,6 +280,17 @@ namespace WebApplication.Data.Migrations
                     b.HasIndex("ProjectTypeId");
 
                     b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "",
+                            LecturerId = "50717a31-498c-434a-972b-d79c0b9453a7",
+                            ProjectTypeId = (short)2,
+                            Status = (byte)0,
+                            Title = "Hệ thống quản lý đồ án Hutech"
+                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.ProjectMember", b =>
@@ -290,7 +301,7 @@ namespace WebApplication.Data.Migrations
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("Grade")
+                    b.Property<float?>("Grade")
                         .HasColumnType("real");
 
                     b.HasKey("ProjectId", "StudentId");
@@ -298,6 +309,13 @@ namespace WebApplication.Data.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("ProjectMembers");
+
+                    b.HasData(
+                        new
+                        {
+                            ProjectId = 1,
+                            StudentId = "dc291a7b-65b1-4a7f-a7c5-5e8dfef5e122"
+                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.ProjectSchedule", b =>
@@ -320,7 +338,7 @@ namespace WebApplication.Data.Migrations
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Rating")
+                    b.Property<float?>("Rating")
                         .HasColumnType("real");
 
                     b.HasKey("Id");

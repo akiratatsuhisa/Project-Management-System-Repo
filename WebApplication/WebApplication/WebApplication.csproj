@@ -40,6 +40,16 @@
     <Compile Remove="Data\Migrations\20191205124127_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191205125445_CreateFacultyAndSpecializedFaculty.cs" />
     <Compile Remove="Data\Migrations\20191205125445_CreateFacultyAndSpecializedFaculty.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212120723_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191212120723_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212120740_InitData.cs" />
+    <Compile Remove="Data\Migrations\20191212120740_InitData.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212122650_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191212122650_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212123116_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191212123116_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212123419_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191212123419_InitTable.Designer.cs" />
   </ItemGroup>
 
 
@@ -47,6 +57,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />

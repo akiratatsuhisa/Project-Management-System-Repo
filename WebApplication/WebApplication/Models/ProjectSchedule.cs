@@ -18,10 +18,7 @@ namespace WebApplication.Models
         public string Name { get; set; }
 
         public string Note { get; set; }
-
-        [Required]
-        [Range(0,10)]
-        public float Rating { get; set; }
+        public float? Rating { get; set; }
 
         public DateTime ExpiredDate { get; set; }
 
