@@ -18,10 +18,6 @@ namespace WebApplication.Models
 
         public virtual ProjectType ProjectType { get; set; }
 
-        public short SpecializedFacultyId { get; set; }
-
-        public virtual SpecializedFaculty SpecializedFaculty { get; set; }
-
         [Required]
         [StringLength(256)]
         public string Title { get; set; }
@@ -29,13 +25,6 @@ namespace WebApplication.Models
         public string Description { get; set; }
 
         public byte Status { get; set; }
-
-        [Range(1,2)]
-        public byte Semester { get; set; }
-
-        [Required]
-        [DataType(DataType.DateTime)]
-        public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
 

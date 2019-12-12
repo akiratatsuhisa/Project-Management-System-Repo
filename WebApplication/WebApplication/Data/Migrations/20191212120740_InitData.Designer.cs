@@ -10,8 +10,8 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191205124127_InitTable")]
-    partial class InitTable
+    [Migration("20191212120740_InitData")]
+    partial class InitData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -237,37 +237,15 @@ namespace WebApplication.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("WebApplication.Models.Faculty", b =>
-                {
-                    b.Property<short>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("smallint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Faculties");
-                });
-
             modelBuilder.Entity("WebApplication.Models.Lecturer", b =>
                 {
                     b.Property<string>("LecturerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<short>("FacultyId")
-                        .HasColumnType("smallint");
-
                     b.Property<bool>("IsManager")
                         .HasColumnType("bit");
 
                     b.HasKey("LecturerId");
-
-                    b.HasIndex("FacultyId");
 
                     b.ToTable("Lecturers");
                 });
@@ -279,9 +257,6 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -290,12 +265,6 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<short>("ProjectTypeId")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("Semester")
-                        .HasColumnType("tinyint");
-
-                    b.Property<short>("SpecializedFacultyId")
                         .HasColumnType("smallint");
 
                     b.Property<byte>("Status")
@@ -311,8 +280,6 @@ namespace WebApplication.Data.Migrations
                     b.HasIndex("LecturerId");
 
                     b.HasIndex("ProjectTypeId");
-
-                    b.HasIndex("SpecializedFacultyId");
 
                     b.ToTable("Projects");
                 });
@@ -412,37 +379,38 @@ namespace WebApplication.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectTypes");
-                });
 
-            modelBuilder.Entity("WebApplication.Models.SpecializedFaculty", b =>
-                {
-                    b.Property<short>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("smallint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<short>("FacultyId")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FacultyId");
-
-                    b.ToTable("SpecializedFaculties");
+                    b.HasData(
+                        new
+                        {
+                            Id = (short)1,
+                            IsDisabled = false,
+                            Name = "Đồ án cơ sở"
+                        },
+                        new
+                        {
+                            Id = (short)2,
+                            IsDisabled = false,
+                            Name = "Đồ án chuyên ngành"
+                        },
+                        new
+                        {
+                            Id = (short)3,
+                            IsDisabled = false,
+                            Name = "Đồ án thực tập"
+                        },
+                        new
+                        {
+                            Id = (short)4,
+                            IsDisabled = false,
+                            Name = "Đồ án tổng hợp"
+                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.Student", b =>
                 {
                     b.Property<string>("StudentId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<short>("FacultyId")
-                        .HasColumnType("smallint");
 
                     b.Property<string>("LecturerId")
                         .HasColumnType("nvarchar(450)");
@@ -452,8 +420,6 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("char(10)");
 
                     b.HasKey("StudentId");
-
-                    b.HasIndex("FacultyId");
 
                     b.HasIndex("LecturerId");
 
@@ -516,12 +482,6 @@ namespace WebApplication.Data.Migrations
 
             modelBuilder.Entity("WebApplication.Models.Lecturer", b =>
                 {
-                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
-                        .WithMany("Lecturers")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WebApplication.Models.ApplicationUser", "ApplicationUser")
                         .WithOne("Lecturer")
                         .HasForeignKey("WebApplication.Models.Lecturer", "LecturerId")
@@ -540,12 +500,6 @@ namespace WebApplication.Data.Migrations
                     b.HasOne("WebApplication.Models.ProjectType", "ProjectType")
                         .WithMany("Projects")
                         .HasForeignKey("ProjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplication.Models.SpecializedFaculty", "SpecializedFaculty")
-                        .WithMany("Projects")
-                        .HasForeignKey("SpecializedFacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -589,23 +543,8 @@ namespace WebApplication.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApplication.Models.SpecializedFaculty", b =>
-                {
-                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
-                        .WithMany("SpecializedFaculties")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("WebApplication.Models.Student", b =>
                 {
-                    b.HasOne("WebApplication.Models.Faculty", "Faculty")
-                        .WithMany("Students")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WebApplication.Models.Lecturer", "Lecturer")
                         .WithMany("Students")
                         .HasForeignKey("LecturerId");

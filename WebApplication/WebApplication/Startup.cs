@@ -134,7 +134,7 @@ namespace WebApplication
                     await userManager.AddToRoleAsync(user, "Lecturer");
                 }
                 lecturerId = user.Id;
-                context.Add(new Lecturer {LecturerId = lecturerId, FacultyId = 1, IsManager = false });
+                context.Add(new Lecturer {LecturerId = lecturerId, IsManager = false });
                 await context.SaveChangesAsync();
 
             }
@@ -155,7 +155,7 @@ namespace WebApplication
                 {
                     await userManager.AddToRoleAsync(user, "Student");
                 }
-                context.Add(new Student { StudentId = user.Id, FacultyId = 1, StudentCode = "1611061161", LecturerId = lecturerId });
+                context.Add(new Student { StudentId = user.Id, StudentCode = "1611061161", LecturerId = lecturerId });
                 await context.SaveChangesAsync();
             }
         }

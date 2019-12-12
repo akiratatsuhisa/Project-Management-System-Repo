@@ -15,11 +15,6 @@ namespace WebApplication.Models
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        [Required]
-        public short FacultyId { get; set; }
-
-        public virtual Faculty Faculty { get; set; }
-
         public bool IsManager { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }

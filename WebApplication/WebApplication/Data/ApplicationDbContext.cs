@@ -9,10 +9,6 @@ namespace WebApplication.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public virtual DbSet<Faculty> Faculties { get; set; }
-
-        public virtual DbSet<SpecializedFaculty> SpecializedFaculties { get; set; }
-
         public virtual DbSet<Student> Students { get; set; }
 
         public virtual DbSet<Lecturer> Lecturers { get; set; }
@@ -56,19 +52,11 @@ namespace WebApplication.Data
                 .HasForeignKey(pm => pm.StudentId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.Entity<Faculty>().HasData(
-                new Faculty { Id = 1, Name = "Công nghệ thông tin" }
-                );
-            builder.Entity<SpecializedFaculty>().HasData(
-                new SpecializedFaculty { Id = 1, FacultyId = 1, Name = "Công nghệ phần mềm"},
-                new SpecializedFaculty { Id = 2, FacultyId = 1, Name = "Hệ thống thông tin"},
-                new SpecializedFaculty { Id = 3, FacultyId = 1, Name = "An toàn thông tin"}
-                );
             builder.Entity<ProjectType>().HasData(
-                new ProjectType { Id = 1, Name = "Đồ án cơ sở"},
-                new ProjectType { Id = 2, Name = "Đồ án chuyên ngành"},
-                new ProjectType { Id = 3, Name = "Đồ án thực tập"},
-                new ProjectType { Id = 4, Name = "Đồ án tổng hợp"}
+                new ProjectType { Id = 1, Name = "Đồ án cơ sở" },
+                new ProjectType { Id = 2, Name = "Đồ án chuyên ngành" },
+                new ProjectType { Id = 3, Name = "Đồ án thực tập" },
+                new ProjectType { Id = 4, Name = "Đồ án tổng hợp" }
                 );
         }
     }

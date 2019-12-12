@@ -14,11 +14,7 @@ namespace WebApplication.Models
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        [Required]
-        public short FacultyId { get; set; }
-
-        public virtual Faculty Faculty { get; set; }
-
+    
         public string LecturerId { get; set; }
 
         public virtual Lecturer Lecturer { get; set; }

@@ -36,6 +36,8 @@
     <Compile Remove="Data\Migrations\20191202090902_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191205123824_InitTable.cs" />
     <Compile Remove="Data\Migrations\20191205123824_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191205124127_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191205124127_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191205125445_CreateFacultyAndSpecializedFaculty.cs" />
     <Compile Remove="Data\Migrations\20191205125445_CreateFacultyAndSpecializedFaculty.Designer.cs" />
   </ItemGroup>
