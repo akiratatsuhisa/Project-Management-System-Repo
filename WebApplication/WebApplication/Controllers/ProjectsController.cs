@@ -25,6 +25,7 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             var studentId = _userManager.GetUserId(User);
+            ViewBag.Student = _context.Students.Include(s => s.ApplicationUser).First(s => s.StudentId == studentId);
             return View(_context.Projects
                             .Include(p => p.ProjectMembers)
                             .Where(p => p.ProjectMembers.Where(pm => pm.StudentId == studentId).Count() == 1)

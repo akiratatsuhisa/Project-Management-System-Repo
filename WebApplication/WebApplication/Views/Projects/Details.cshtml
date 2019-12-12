@@ -6,77 +6,80 @@
 }
 
 <div class="section">
-    <div>
-        <h3 class="m-3 m-md-2 text-center">
-            @Model.Title
-        </h3>
-        <div class="row">
-            <div class="col-md-3">
-                <hr />
-                <ul class="nav nav-pills nav-pills-primary flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="#list-home" data-toggle="tab">Tổng quan</a></li>
-                    @for (var i = 1; i < 11; i++)
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">
+                @Model.Title
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <hr />
+            <ul class="nav nav-pills nav-pills-primary flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#list-home" data-toggle="tab">Tổng quan</a></li>
+                @for (var i = 1; i < 11; i++)
+                {
+                    <li class="nav-item"><a class="nav-link" href="#list-week-@i" data-toggle="tab">Tuần @i</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <hr />
+            <div class="tab-content">
+                <div class="tab-pane active" id="list-home">
+                    Tên giảng viên: @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+
+                    <div>Mô tả: </div>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <div>Thành viên</div>
+                    @foreach (ProjectMember item in ViewBag.ProjectMembers)
                     {
-                        <li class="nav-item"><a class="nav-link" href="#list-week-@i" data-toggle="tab">Tuần @i</a></li>
+                        <div>Tên: @item.Student.ApplicationUser.LastName  @item.Student.ApplicationUser.FirstName, MSSV: @item.Student.StudentCode</div>
                     }
-                </ul>
-            </div>
-            <div class="col-md-9">
-                <hr />
-                <div class="tab-content">
-                    <div class="tab-pane active" id="list-home">
-                        Tên giảng viên: @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
 
-                        <div>Mô tả: </div>
-                        <p>
-                            @Model.Description
-                        </p>
-                        <div>Thành viên</div>
-                        @foreach (ProjectMember item in ViewBag.ProjectMembers)
-                        {
-                            <div>Tên: @item.Student.ApplicationUser.LastName  @item.Student.ApplicationUser.FirstName, MSSV: @item.Student.StudentCode</div>
-                        }
-
-                    </div>
-                    @for (var i = 1; i < 11; i++)
-                    {
-                        <div class="tab-pane" id="list-week-@i">
-                            <ul class="nav nav-pills nav-pills-primary nav-pills-icons" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#demand-@i" role="tab" data-toggle="tab">
-                                        <i class="material-icons">dashboard</i>
-                                        Yêu cầu
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#report-@i" role="tab" data-toggle="tab">
-                                        <i class="material-icons">schedule</i>
-                                        Báo cáo
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#rating-@i" role="tab" data-toggle="tab">
-                                        <i class="material-icons">list</i>
-                                        Điểm
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content tab-space">
-                                <div class="tab-pane active" id="demand-@i">
-                                    Tên tiến trình: @projectSchedules[i - 1].Name
-                                    <hr />
-                                </div>
-                                <div class="tab-pane" id="report-@i">
-                                    Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                                    <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                </div>
-                                <div class="tab-pane" id="rating-@i">
-                                    Điểm: @projectSchedules[i - 1].Rating
-                                </div>
+                </div>
+                @for (var i = 1; i < 11; i++)
+                {
+                    <div class="tab-pane" id="list-week-@i">
+                        <ul class="nav nav-pills nav-pills-primary nav-pills-icons" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#demand-@i" role="tab" data-toggle="tab">
+                                    <i class="material-icons">dashboard</i>
+                                    Yêu cầu
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#report-@i" role="tab" data-toggle="tab">
+                                    <i class="material-icons">schedule</i>
+                                    Báo cáo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#rating-@i" role="tab" data-toggle="tab">
+                                    <i class="material-icons">list</i>
+                                    Điểm
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tab-space">
+                            <div class="tab-pane active" id="demand-@i">
+                                Tên tiến trình: @projectSchedules[i - 1].Name
+                                <hr />
+                            </div>
+                            <div class="tab-pane" id="report-@i">
+                                Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                                <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                            </div>
+                            <div class="tab-pane" id="rating-@i">
+                                Điểm: @projectSchedules[i - 1].Rating
                             </div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

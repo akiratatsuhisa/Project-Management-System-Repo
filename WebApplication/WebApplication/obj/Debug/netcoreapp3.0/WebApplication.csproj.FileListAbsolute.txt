@@ -652,7 +652,6 @@ E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debu
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\_ViewImports.cshtml.g.cs
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\_ViewStart.cshtml.g.cs
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
-E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Details.cshtml.g.cs
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Projects\Index.cshtml.g.cs
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs

@@ -2,12 +2,31 @@
 
 @{
     ViewData["Title"] = "Index";
+    Student student = @ViewBag.Student;
 }
 <div class="section">
-    <div>
-        <h3 class="m-3 m-md-2 text-center">
-            Danh sách đồ án cá nhân
-        </h3>
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Danh sách đồ án cá nhân</h2>
+            <div class="description">
+                <dl class="row">
+                    <dt class="col-2">
+                        MSSV:
+                    </dt>
+                    <dd class="col-10">
+                        @student.StudentCode
+                    </dd>
+                    <dt class="col-2">
+                        Tên:
+                    </dt>
+                    <dd class="col-10">
+                        @student.ApplicationUser.LastName @student.ApplicationUser.FirstName
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <table class="table">
             <thead>
                 <tr>
