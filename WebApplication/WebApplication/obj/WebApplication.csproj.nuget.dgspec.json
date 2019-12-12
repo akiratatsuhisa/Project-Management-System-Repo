@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
+    "E:\\GitHub\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
   },
   "projects": {
-    "D:\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
+    "E:\\GitHub\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "projectUniqueName": "E:\\GitHub\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
         "projectName": "WebApplication",
-        "projectPath": "D:\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "packagesPath": "C:\\Users\\minhk\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
+        "projectPath": "E:\\GitHub\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "packagesPath": "C:\\Users\\AkiraTatsuhisa\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\Projects-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\minhk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AkiraTatsuhisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,24 +84,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -107,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -97,6 +97,7 @@ namespace WebApplication
             if (user == null)
             {
                 user = new ApplicationUser();
+                user.Id = "5e21a16c-e583-4fc2-a786-d763d0c4a8d1";
                 user.UserName = email;
                 user.Email = email;
                 user.FirstName = "Administrator";
@@ -122,6 +123,7 @@ namespace WebApplication
             if (user == null)
             {
                 user = new ApplicationUser();
+                user.Id = "50717a31-498c-434a-972b-d79c0b9453a7";
                 user.UserName = email;
                 user.Email = email;
                 user.FirstName = "Khiem";
@@ -145,6 +147,7 @@ namespace WebApplication
             if (user == null)
             {
                 user = new ApplicationUser();
+                user.Id = "dc291a7b-65b1-4a7f-a7c5-5e8dfef5e122";
                 user.UserName = email;
                 user.Email = email;
                 user.FirstName = "Nhat";
