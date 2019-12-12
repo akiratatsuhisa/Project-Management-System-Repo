@@ -25,7 +25,11 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             var studentId = _userManager.GetUserId(User);
-            return View(_context.ProjectMembers.Where(pm => pm.StudentId == studentId).Select(pm => pm.Project));
+            return View(_context.Projects
+                            .Include(p => p.ProjectMembers)
+                            .Where(p => p.ProjectMembers.Where(pm => pm.StudentId == studentId).Count() == 1)
+                            .Include(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)
+                            .Include(p => p.ProjectType));
         }
 
         public async Task<IActionResult> Details(int id)
@@ -38,15 +42,15 @@ namespace WebApplication.Controllers
             }
             var projectId = result.ProjectId;
             ViewBag.ProjectMembers = _context.ProjectMembers.Where(pm => pm.ProjectId == projectId).Include(pm => pm.Student).ThenInclude(s => s.ApplicationUser);
-            //if (_context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).Count() == 0)
-            //{
-            //    var dateTimeNow = DateTime.Now;
-            //    for (var i = 1; i < 11; i++)
-            //    {
-            //        _context.ProjectSchedules.Add(new ProjectSchedule { ProjectId = projectId, Name = $"Nhiệm vụ tuần {i}", ExpiredDate = dateTimeNow.AddDays(7) });
-            //    }
-            //    await _context.SaveChangesAsync();
-            //}
+            if (_context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).Count() == 0)
+            {
+                var dateTimeNow = DateTime.Now;
+                for (var i = 1; i < 11; i++)
+                {
+                    _context.ProjectSchedules.Add(new ProjectSchedule { ProjectId = projectId, Name = $"Nhiệm vụ tuần {i}", ExpiredDate = dateTimeNow.AddDays(7) });
+                }
+                await _context.SaveChangesAsync();
+            }
             ViewBag.ProjectSchedules = _context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).OrderBy(ps => ps.ExpiredDate).ToList();
             return View(await _context.Projects
                     .Include(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)

@@ -7,7 +7,7 @@
 
 <div class="section">
     <div>
-        <h3 class="mx-md-3 mx-1 text-center">
+        <h3 class="m-3 m-md-2 text-center">
             @Model.Title
         </h3>
         <div class="row">
@@ -41,26 +41,36 @@
                     @for (var i = 1; i < 11; i++)
                     {
                         <div class="tab-pane" id="list-week-@i">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <ul class="nav nav-pills nav-pills-primary nav-pills-icons" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="demand-tab-@i" data-toggle="tab" href="#demand-@i" role="tab" aria-controls="demand-@i" aria-selected="true">Yêu cầu</a>
+                                    <a class="nav-link active" href="#demand-@i" role="tab" data-toggle="tab">
+                                        <i class="material-icons">dashboard</i>
+                                        Yêu cầu
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="report-tab-@i" data-toggle="tab" href="#report-@i" role="tab" aria-controls="report-@i" aria-selected="false">Báo cáo</a>
+                                    <a class="nav-link" href="#report-@i" role="tab" data-toggle="tab">
+                                        <i class="material-icons">schedule</i>
+                                        Báo cáo
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="rating-tab-@i" data-toggle="tab" href="#rating-@i" role="tab" aria-controls="rating-@i" aria-selected="false">Điểm</a>
+                                    <a class="nav-link" href="#rating-@i" role="tab" data-toggle="tab">
+                                        <i class="material-icons">list</i>
+                                        Điểm
+                                    </a>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="demand-@i" role="tabpanel" aria-labelledby="demand-tab-@i">
+                            <div class="tab-content tab-space">
+                                <div class="tab-pane active" id="demand-@i">
                                     Tên tiến trình: @projectSchedules[i - 1].Name
                                     <hr />
                                 </div>
-                                <div class="tab-pane fade" id="report-@i" role="tabpanel" aria-labelledby="report-tab-@i">
-
+                                <div class="tab-pane" id="report-@i">
+                                    Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                                    <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
                                 </div>
-                                <div class="tab-pane fade" id="rating-@i" role="tabpanel" aria-labelledby="rating-tab-@i">
+                                <div class="tab-pane" id="rating-@i">
                                     Điểm: @projectSchedules[i - 1].Rating
                                 </div>
                             </div>
