@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Project Types";
+    var isSuperAdmin = User.IsInRole("SuperAdmin");
 }
 
 <div class="row">
@@ -11,9 +12,12 @@
                 <h3 class="card-title">Danh sách loại đồ án</h3>
             </div>
             <div class="card-body">
-                <a class="btn btn-success" asp-action="Create">
-                    Tạo mới loại đồ án
-                </a>
+                @if (isSuperAdmin)
+                {
+                    <a class="btn btn-success" asp-action="Create">
+                        Tạo mới loại đồ án
+                    </a>
+                }
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
@@ -41,7 +45,7 @@
                                         <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Chi tiết" class="btn btn-info">
                                             <i class="material-icons">info</i>
                                         </a>
-                                        @if (User.IsInRole("SuperAdmin"))
+                                        @if (isSuperAdmin)
                                         {
                                             <a asp-action="Edit" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success">
                                                 <i class="material-icons">edit</i>

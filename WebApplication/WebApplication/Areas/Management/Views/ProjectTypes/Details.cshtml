@@ -27,7 +27,10 @@
                     </dd>
                 </dl>
                 <div>
-                    <a class="btn btn-outline-success" asp-action="Edit">Sửa</a>
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="btn btn-outline-success" asp-action="Edit">Sửa</a>
+                    }
                     <a class="btn btn-outline-primary" asp-action="Index">Quay lại</a>
                 </div>
             </div>
