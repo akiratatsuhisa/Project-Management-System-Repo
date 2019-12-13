@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ProjectScheduleReport>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-12">
+            <div class="card card-nav-tabs">
+                <h4 class="card-header card-header-info">Nộp lúc: @item.CreatedDate</h4>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        @item.Student.StudentCode - @item.Student.ApplicationUser.LastName @item.Student.ApplicationUser.FirstName
+                    </h4>
+                    <h6 class="card-text">Ghi chú:</h6>
+                    <p class="card-text">@item.Note</p>
+                    <a href="@item.ReportUrl" class="btn btn-outline-info">report link</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

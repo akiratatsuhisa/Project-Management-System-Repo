@@ -134,16 +134,19 @@
                                     <div class="form-group">
                                         @if (projectSchedules[i].ExpiredDate.Date < DateTime.Now.Date)
                                         {
-                                            <button type="submit" class="btn btn-outline-success" disabled>Gửi báo cáo</button>
+                                            <button type="submit" class="btn btn-outline-danger btn-block" disabled>Gửi báo cáo</button>
                                             <p class="form-text text-danger">Đã hết hạn nộp báo cáo</p>
                                         }
                                         else
                                         {
-                                            <button type="submit" class="btn btn-outline-success">Gửi báo cáo</button>
+                                            <button type="submit" class="btn btn-success btn-block">Gửi báo cáo</button>
                                         }
                                     </div>
                                 </form>
-                                <hr />
+
+                                <hr class="my-2 my-md-3"/>
+
+                                @await Component.InvokeAsync("ProjectScheduleReports", new { id = projectSchedules[i].Id})
                             </div>
 
                             <div class="tab-pane" id="rating-@(i+1)">

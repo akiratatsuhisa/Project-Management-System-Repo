@@ -846,3 +846,4 @@ C:\Code\Github\Project-Management-System-Repo\WebApplication\WebApplication\obj\
 C:\Code\Github\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.csproj.CopyComplete
 C:\Code\Github\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.dll
 C:\Code\Github\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.pdb
+C:\Code\Github\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Components\ProjectScheduleReports\Default.cshtml.g.cs

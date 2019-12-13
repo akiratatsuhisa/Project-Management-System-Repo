@@ -47,7 +47,7 @@ namespace WebApplication.Controllers
             //Test
             if (_context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).Count() == 0)
             {
-                var dateTimeNow = DateTime.Now.AddMonths(-2);
+                var dateTimeNow = DateTime.Now.AddMonths(-1);
                 for (var i = 1; i < 11; i++)
                 {
                     dateTimeNow = dateTimeNow.AddDays(7);
@@ -64,7 +64,7 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateNewReport(ProjectScheduleReport projectScheduleReport, int projectId)
+        public async Task<IActionResult> CreateNewReport(ProjectScheduleReport projectScheduleReport, int projectId)
         {
             var studentId = _userManager.GetUserId(User);
             if (IsValidReport(projectScheduleReport, studentId))
