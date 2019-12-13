@@ -38,15 +38,18 @@
                                         @Html.DisplayFor(modelItem => item.IsDisabled)
                                     </td>
                                     <td class="td-actions text-right">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success">
-                                            <i class="material-icons">edit</i>
-                                        </a>
                                         <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Chi tiết" class="btn btn-info">
                                             <i class="material-icons">info</i>
                                         </a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Xoá" class="btn btn-danger">
-                                            <i class="material-icons">close</i>
-                                        </a>
+                                        @if (User.IsInRole("SuperAdmin"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" rel="tooltip" data-placement="left" title="Xoá" class="btn btn-danger">
+                                                <i class="material-icons">close</i>
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }

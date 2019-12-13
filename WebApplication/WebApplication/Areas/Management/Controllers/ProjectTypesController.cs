@@ -46,6 +46,7 @@ namespace WebApplication.Areas.Management.Controllers
             return View(projectType);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         // GET: Management/ProjectTypes/Create
         public IActionResult Create()
         {
@@ -55,6 +56,8 @@ namespace WebApplication.Areas.Management.Controllers
         // POST: Management/ProjectTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,IsDisabled")] ProjectType projectType)
@@ -68,6 +71,7 @@ namespace WebApplication.Areas.Management.Controllers
             return View(projectType);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         // GET: Management/ProjectTypes/Edit/5
         public async Task<IActionResult> Edit(short? id)
         {
@@ -87,6 +91,8 @@ namespace WebApplication.Areas.Management.Controllers
         // POST: Management/ProjectTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(short id, [Bind("Id,Name,IsDisabled")] ProjectType projectType)
@@ -119,6 +125,7 @@ namespace WebApplication.Areas.Management.Controllers
             return View(projectType);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         // GET: Management/ProjectTypes/Delete/5
         public async Task<IActionResult> Delete(short? id)
         {
@@ -137,6 +144,7 @@ namespace WebApplication.Areas.Management.Controllers
             return View(projectType);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         // POST: Management/ProjectTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
