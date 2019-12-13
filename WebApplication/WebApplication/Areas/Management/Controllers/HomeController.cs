@@ -15,5 +15,11 @@ namespace WebApplication.Areas.Management.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "SuperAdmin")]
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
     }
 }

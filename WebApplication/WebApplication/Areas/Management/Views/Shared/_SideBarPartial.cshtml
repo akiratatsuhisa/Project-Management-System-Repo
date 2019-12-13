@@ -1,24 +1,24 @@
-﻿@{ 
+﻿@{
     Func<string, string, string> ActiveNavItem = (controllerName, actionName) =>
     {
         if (ViewContext.RouteData.Values["Controller"].ToString() == controllerName && actionName == "")
         {
             return "active";
         }
-        if (ViewContext.RouteData.Values["Controller"].ToString()  == controllerName && ViewContext.RouteData.Values["Action"].ToString() == actionName)
+        if (ViewContext.RouteData.Values["Controller"].ToString() == controllerName && ViewContext.RouteData.Values["Action"].ToString() == actionName)
         {
             return "active";
         }
         return "";
     };
-    
+    var isSuperAdmin = User.IsInRole("SuperAdmin");
 }
 
 <div class="sidebar-wrapper">
     <ul class="nav">
         <li class="nav-item @ActiveNavItem("Home", "Index")">
             <a class="nav-link" asp-controller="Home" asp-action="Index">
-                <i class="material-icons">dashboard</i>
+                <i class="material-icons">home</i>
                 <p>Trang chủ</p>
             </a>
         </li>
@@ -28,29 +28,38 @@
                 <p>Quản lý loại đồ án</p>
             </a>
         </li>
+        @if (isSuperAdmin)
+        {
+            <li class="nav-item @ActiveNavItem("Home", "Dashboard")">
+                <a class="nav-link" asp-controller="Home" asp-action="Dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <p>Bảng điều kiển</p>
+                </a>
+            </li>
+        }
         @*<li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-                <i class="material-icons">library_books</i>
-                <p>Typography</p>
-            </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-                <i class="material-icons">bubble_chart</i>
-                <p>Icons</p>
-            </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-                <i class="material-icons">location_ons</i>
-                <p>Maps</p>
-            </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-                <i class="material-icons">notifications</i>
-                <p>Notifications</p>
-            </a>
-        </li>*@
+                <a class="nav-link" href="./typography.html">
+                    <i class="material-icons">library_books</i>
+                    <p>Typography</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./icons.html">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Icons</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./map.html">
+                    <i class="material-icons">location_ons</i>
+                    <p>Maps</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./notifications.html">
+                    <i class="material-icons">notifications</i>
+                    <p>Notifications</p>
+                </a>
+            </li>*@
     </ul>
 </div>

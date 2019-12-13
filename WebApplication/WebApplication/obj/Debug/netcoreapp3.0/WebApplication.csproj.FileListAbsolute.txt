@@ -667,3 +667,4 @@ E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debu
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.csproj.CopyComplete
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.dll
 E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.pdb
+E:\GitHub\Projects-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Home\Dashboard.cshtml.g.cs
