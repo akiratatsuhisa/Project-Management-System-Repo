@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication.Data.Migrations
 {
-    public partial class InitData : Migration
+    public partial class InitTestData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,8 +20,8 @@ namespace WebApplication.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Projects",
-                columns: new[] { "Id", "Description", "LecturerId", "ProjectTypeId", "Status", "Title" },
-                values: new object[] { 1, "", "50717a31-498c-434a-972b-d79c0b9453a7", (short)2, (byte)0, "Hệ thống quản lý đồ án Hutech" });
+                columns: new[] { "Id", "CreatedDate", "Description", "LecturerId", "ProjectTypeId", "Status", "Title" },
+                values: new object[] { 1, new DateTime(2019, 10, 21, 13, 30, 0, 0, DateTimeKind.Unspecified), "", "50717a31-498c-434a-972b-d79c0b9453a7", (short)2, (byte)0, "Hệ thống quản lý đồ án Hutech" });
 
             migrationBuilder.InsertData(
                 table: "ProjectMembers",

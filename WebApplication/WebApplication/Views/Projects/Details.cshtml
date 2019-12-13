@@ -97,17 +97,70 @@
 
                         <div class="tab-content tab-space">
                             <div class="tab-pane active" id="demand-@(i+1)">
-                                Tên tiến trình: @projectSchedules[i].Name
+                                <dl class="row">
+                                    <dt class="col-md-2">
+                                        Tên tiến trình:
+                                    </dt>
+                                    <dd class="col-md-10">
+                                        @projectSchedules[i].Name
+                                    </dd>
+                                    <dt class="col-md-2">
+                                        Ngày hết hạn:
+                                    </dt>
+                                    <dd class="col-md-10">
+                                        <span class="@(projectSchedules[i].ExpiredDate.Date < DateTime.Now.Date ? "text-danger":"text-success")">
+                                            @projectSchedules[i].ExpiredDate.ToShortDateString()
+                                        </span>
+                                    </dd>
+                                </dl>
                                 <hr />
+                                <div>
+                                    @Html.Raw(projectSchedules[i].Description)
+                                </div>
                             </div>
 
                             <div class="tab-pane" id="report-@(i+1)">
-                                Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                                <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                                <form asp-action="CreateNewReport" method="post">
+                                    <input type="hidden" name="ProjectId" value="@Model.Id">
+                                    <input type="hidden" name="ProjectScheduleId" value="@projectSchedules[i].Id">
+                                    <div class="form-group">
+                                        <label for="ReportUrl">Report Url</label>
+                                        <input type="url" class="form-control" name="ReportUrl" placeholder="Nhập Url">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Note">Ghi chú</label>
+                                        <textarea class="form-control" name="Note" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        @if (projectSchedules[i].ExpiredDate.Date < DateTime.Now.Date)
+                                        {
+                                            <button type="submit" class="btn btn-outline-success" disabled>Gửi báo cáo</button>
+                                            <p class="form-text text-danger">Đã hết hạn nộp báo cáo</p>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-outline-success">Gửi báo cáo</button>
+                                        }
+                                    </div>
+                                </form>
+                                <hr />
                             </div>
 
                             <div class="tab-pane" id="rating-@(i+1)">
-                                Điểm: @projectSchedules[i].Rating
+                                <dl class="row">
+                                    <dt class="col-md-2">
+                                        Điểm:
+                                    </dt>
+                                    <dd class="col-md-10">
+                                        @projectSchedules[i].Rating
+                                    </dd>
+                                    <dt class="col-md-2">
+                                        Đánh giá:
+                                    </dt>
+                                    <dd class="col-md-10">
+                                        @projectSchedules[i].Comment
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>

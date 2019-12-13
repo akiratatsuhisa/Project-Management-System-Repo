@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
@@ -18,5 +19,7 @@ namespace WebApplication.Models
         public string ReportUrl { get; set; }
 
         public string Note { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -50,6 +50,16 @@
     <Compile Remove="Data\Migrations\20191212123116_InitTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20191212123419_InitTable.cs" />
     <Compile Remove="Data\Migrations\20191212123419_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212123749_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191212123749_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191212124142_InitData.cs" />
+    <Compile Remove="Data\Migrations\20191212124142_InitData.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191213134341_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191213134341_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191213134514_InitTable.cs" />
+    <Compile Remove="Data\Migrations\20191213134514_InitTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191213135230_InitTestData.cs" />
+    <Compile Remove="Data\Migrations\20191213135230_InitTestData.Designer.cs" />
   </ItemGroup>
 
 

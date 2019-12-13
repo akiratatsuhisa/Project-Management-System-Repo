@@ -101,7 +101,8 @@ namespace WebApplication.Data.Migrations
                     ProjectTypeId = table.Column<short>(nullable: false),
                     Title = table.Column<string>(maxLength: 256, nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    Status = table.Column<byte>(nullable: false)
+                    Status = table.Column<byte>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,7 +153,8 @@ namespace WebApplication.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
-                    Note = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
                     Rating = table.Column<float>(nullable: true),
                     ExpiredDate = table.Column<DateTime>(nullable: false)
                 },
@@ -176,7 +178,8 @@ namespace WebApplication.Data.Migrations
                     ProjectScheduleId = table.Column<long>(nullable: false),
                     StudentId = table.Column<string>(nullable: false),
                     ReportUrl = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(nullable: true)
+                    Note = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -31,6 +31,9 @@ namespace WebApplication.Models
         [Display(Name = "Trạng thái")]
         public byte Status { get; set; }
 
+        [Display(Name = "Ngày tạo")]
+        public DateTime CreatedDate { get; set; }
+
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
 
         public virtual ICollection<ProjectSchedule> ProjectSchedules { get; set; }

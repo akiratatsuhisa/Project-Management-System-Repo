@@ -10,8 +10,8 @@ using WebApplication.Data;
 namespace WebApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191212124142_InitData")]
-    partial class InitData
+    [Migration("20191213151228_InitTable")]
+    partial class InitTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -257,6 +257,9 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -282,17 +285,6 @@ namespace WebApplication.Data.Migrations
                     b.HasIndex("ProjectTypeId");
 
                     b.ToTable("Projects");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "",
-                            LecturerId = "50717a31-498c-434a-972b-d79c0b9453a7",
-                            ProjectTypeId = (short)2,
-                            Status = (byte)0,
-                            Title = "Hệ thống quản lý đồ án Hutech"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.ProjectMember", b =>
@@ -311,13 +303,6 @@ namespace WebApplication.Data.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("ProjectMembers");
-
-                    b.HasData(
-                        new
-                        {
-                            ProjectId = 1,
-                            StudentId = "dc291a7b-65b1-4a7f-a7c5-5e8dfef5e122"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.ProjectSchedule", b =>
@@ -327,15 +312,18 @@ namespace WebApplication.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ExpiredDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -356,6 +344,9 @@ namespace WebApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
@@ -397,32 +388,6 @@ namespace WebApplication.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = (short)1,
-                            IsDisabled = false,
-                            Name = "Đồ án cơ sở"
-                        },
-                        new
-                        {
-                            Id = (short)2,
-                            IsDisabled = false,
-                            Name = "Đồ án chuyên ngành"
-                        },
-                        new
-                        {
-                            Id = (short)3,
-                            IsDisabled = false,
-                            Name = "Đồ án thực tập"
-                        },
-                        new
-                        {
-                            Id = (short)4,
-                            IsDisabled = false,
-                            Name = "Đồ án tổng hợp"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication.Models.Student", b =>

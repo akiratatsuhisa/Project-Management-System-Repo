@@ -17,7 +17,10 @@ namespace WebApplication.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public string Note { get; set; }
+        public string Description { get; set; }
+
+        public string Comment { get; set; }
+
         public float? Rating { get; set; }
 
         public DateTime ExpiredDate { get; set; }
