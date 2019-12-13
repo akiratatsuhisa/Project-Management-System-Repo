@@ -1,18 +1,34 @@
-﻿<div class="sidebar-wrapper">
+﻿@{ 
+    Func<string, string, string> ActiveNavItem = (controllerName, actionName) =>
+    {
+        if (ViewContext.RouteData.Values["Controller"].ToString() == controllerName && actionName == "")
+        {
+            return "active";
+        }
+        if (ViewContext.RouteData.Values["Controller"].ToString()  == controllerName && ViewContext.RouteData.Values["Action"].ToString() == actionName)
+        {
+            return "active";
+        }
+        return "";
+    };
+    
+}
+
+<div class="sidebar-wrapper">
     <ul class="nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="./dashboard.html">
+        <li class="nav-item @ActiveNavItem("Home", "Index")">
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
                 <i class="material-icons">dashboard</i>
-                <p>Dashboard</p>
+                <p>Trang chủ</p>
             </a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+        <li class="nav-item @ActiveNavItem("ProjectTypes", "")">
+            <a class="nav-link" asp-controller="ProjectTypes" asp-action="Index">
                 <i class="material-icons">content_paste</i>
-                <p>Table List</p>
+                <p>Quản lý loại đồ án</p>
             </a>
         </li>
-        <li class="nav-item ">
+        @*<li class="nav-item ">
             <a class="nav-link" href="./typography.html">
                 <i class="material-icons">library_books</i>
                 <p>Typography</p>
@@ -35,12 +51,6 @@
                 <i class="material-icons">notifications</i>
                 <p>Notifications</p>
             </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-                <i class="material-icons">language</i>
-                <p>RTL Support</p>
-            </a>
-        </li>
+        </li>*@
     </ul>
 </div>

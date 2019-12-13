@@ -1,7 +1,7 @@
 ﻿@model WebApplication.Models.Project
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Đồ án - " + Model.Title;
     List<ProjectSchedule> projectSchedules = ViewBag.ProjectSchedules;
 }
 
@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
             <h2 class="title">
-                @Model.Title
+                @Html.DisplayFor(model => model.Title)
             </h2>
         </div>
     </div>
@@ -18,64 +18,96 @@
         <div class="col-md-3">
             <hr />
             <ul class="nav nav-pills nav-pills-primary flex-column">
+                <!--Tổng quan-->
                 <li class="nav-item"><a class="nav-link active" href="#list-home" data-toggle="tab">Tổng quan</a></li>
-                @for (var i = 1; i < 11; i++)
+                <!--Tuần-->
+                @for (var i = 0; i < projectSchedules.Count; i++)
                 {
-                    <li class="nav-item"><a class="nav-link" href="#list-week-@i" data-toggle="tab">Tuần @i</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#list-week-@(i+1)" data-toggle="tab">Tuần @(i + 1)</a></li>
                 }
             </ul>
         </div>
         <div class="col-md-9">
             <hr />
             <div class="tab-content">
+                <!--Tổng quan-->
                 <div class="tab-pane active" id="list-home">
-                    Tên giảng viên: @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+                    <h3 class="info-title">Thông tin</h3>
 
-                    <div>Mô tả: </div>
-                    <p>
-                        @Model.Description
-                    </p>
-                    <div>Thành viên</div>
-                    @foreach (ProjectMember item in ViewBag.ProjectMembers)
-                    {
-                        <div>Tên: @item.Student.ApplicationUser.LastName  @item.Student.ApplicationUser.FirstName, MSSV: @item.Student.StudentCode</div>
-                    }
-
+                    <dl class="row">
+                        <dt class="col-md-2">
+                            @Html.DisplayNameFor(model => model.LecturerId):
+                        </dt>
+                        <dd class="col-md-10">
+                            @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+                        </dd>
+                        <dt class="col-md-2">
+                            @Html.DisplayNameFor(model => model.Description):
+                        </dt>
+                        <dd class="col-md-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                    </dl>
+                    <hr />
+                    <h3 class="info-title">Thành viên</h3>
+                    <dl class="row">
+                        @foreach (ProjectMember item in ViewBag.ProjectMembers)
+                        {
+                            <dt class="col-md-2">
+                                Tên:
+                            </dt>
+                            <dd class="col-md-10">
+                                @item.Student.ApplicationUser.LastName @item.Student.ApplicationUser.FirstName
+                            </dd>
+                            <dt class="col-md-2">
+                                MSSV:
+                            </dt>
+                            <dd class="col-md-10">
+                                @item.Student.StudentCode
+                            </dd>
+                        }
+                    </dl>
                 </div>
-                @for (var i = 1; i < 11; i++)
+                <!--Tuần-->
+                @for (var i = 0; i < projectSchedules.Count; i++)
                 {
-                    <div class="tab-pane" id="list-week-@i">
+                    <div class="tab-pane" id="list-week-@(i+1)">
                         <ul class="nav nav-pills nav-pills-primary nav-pills-icons" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#demand-@i" role="tab" data-toggle="tab">
-                                    <i class="material-icons">dashboard</i>
+                                <a class="nav-link active" href="#demand-@(i+1)" role="tab" data-toggle="tab">
+                                    <i class="material-icons">event_note</i>
                                     Yêu cầu
                                 </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="#report-@i" role="tab" data-toggle="tab">
+                                <a class="nav-link" href="#report-@(i+1)" role="tab" data-toggle="tab">
                                     <i class="material-icons">schedule</i>
                                     Báo cáo
                                 </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="#rating-@i" role="tab" data-toggle="tab">
-                                    <i class="material-icons">list</i>
+                                <a class="nav-link" href="#rating-@(i+1)" role="tab" data-toggle="tab">
+                                    <i class="material-icons">format_list_numbered</i>
                                     Điểm
                                 </a>
                             </li>
                         </ul>
+
                         <div class="tab-content tab-space">
-                            <div class="tab-pane active" id="demand-@i">
-                                Tên tiến trình: @projectSchedules[i - 1].Name
+                            <div class="tab-pane active" id="demand-@(i+1)">
+                                Tên tiến trình: @projectSchedules[i].Name
                                 <hr />
                             </div>
-                            <div class="tab-pane" id="report-@i">
+
+                            <div class="tab-pane" id="report-@(i+1)">
                                 Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
                                 <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
                             </div>
-                            <div class="tab-pane" id="rating-@i">
-                                Điểm: @projectSchedules[i - 1].Rating
+
+                            <div class="tab-pane" id="rating-@(i+1)">
+                                Điểm: @projectSchedules[i].Rating
                             </div>
                         </div>
                     </div>

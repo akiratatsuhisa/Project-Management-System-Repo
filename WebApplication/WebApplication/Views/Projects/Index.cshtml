@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Project>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách đồ án cá nhân";
     Student student = @ViewBag.Student;
 }
 <div class="section">
     <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
             <h2 class="title">Danh sách đồ án cá nhân</h2>
-            <div class="description">
+            <p>
                 <dl class="row">
                     <dt class="col-2">
                         MSSV:
@@ -23,7 +23,7 @@
                         @student.ApplicationUser.LastName @student.ApplicationUser.FirstName
                     </dd>
                 </dl>
-            </div>
+            </p>
         </div>
     </div>
     <div class="row">
@@ -31,16 +31,16 @@
             <thead>
                 <tr>
                     <th>
-                        Tên đồ án
+                        @Html.DisplayNameFor(model => model.Title)
                     </th>
                     <th>
-                        Loại đồ án
+                        @Html.DisplayNameFor(model => model.ProjectTypeId)
                     </th>
                     <th>
-                        Giảng viên
+                        @Html.DisplayNameFor(model => model.LecturerId)
                     </th>
                     <th>
-                        Trạng thái
+                        @Html.DisplayNameFor(model => model.Status)
                     </th>
                     <th>
                     </th>
@@ -51,16 +51,16 @@
                 {
                     <tr>
                         <td>
-                            @item.Title
+                            @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
-                            @item.ProjectType.Name
+                            @Html.DisplayFor(modelItem => item.ProjectType.Name)
                         </td>
                         <td>
                             @item.Lecturer.ApplicationUser.LastName @item.Lecturer.ApplicationUser.FirstName
                         </td>
                         <td>
-                            @item.Status
+                            @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
                             <a asp-action="Details" asp-route-id="@item.Id">Xem chi tiết</a>
