@@ -24,7 +24,7 @@ namespace WebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var studentId = _userManager.GetUserId(User);
+            var studentId = getCurrentStudentId();
             ViewBag.Student = await _context.Students
                 .Include(s => s.ApplicationUser)
                 .FirstAsync(s => s.StudentId == studentId);
@@ -38,15 +38,19 @@ namespace WebApplication.Controllers
                         );
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            var studentId = _userManager.GetUserId(User);
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var studentId = getCurrentStudentId();
             var projectMember = await _context.ProjectMembers
                 .FirstOrDefaultAsync(pm => pm.StudentId == studentId && pm.ProjectId == id);
 
             if (projectMember == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             var projectId = projectMember.ProjectId;
@@ -116,5 +120,7 @@ namespace WebApplication.Controllers
             }
             return true;
         }
+
+        private string getCurrentStudentId() => _userManager.GetUserId(User);
     }
 }

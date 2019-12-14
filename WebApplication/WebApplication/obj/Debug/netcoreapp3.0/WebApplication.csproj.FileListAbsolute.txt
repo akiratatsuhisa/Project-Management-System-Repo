@@ -1026,3 +1026,5 @@ E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug
 E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.csproj.CopyComplete
 E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.dll
 E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\WebApplication.pdb
+E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Projects\Details.cshtml.g.cs
+E:\GitHub\Project-Management-System-Repo\WebApplication\WebApplication\obj\Debug\netcoreapp3.0\Razor\Areas\Management\Views\Projects\Index.cshtml.g.cs

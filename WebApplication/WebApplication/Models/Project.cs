@@ -9,15 +9,15 @@ namespace WebApplication.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Giảng viên")]
         [Required]
         public string LecturerId { get; set; }
 
+        [Display(Name = "Giảng viên")]
         public virtual Lecturer Lecturer { get; set; }
-        
-        [Display(Name = "Loại đồ án")]
+
         public short ProjectTypeId { get; set; }
 
+        [Display(Name = "Loại đồ án")]
         public virtual ProjectType ProjectType { get; set; }
 
         [Display(Name = "Tên đồ án")]

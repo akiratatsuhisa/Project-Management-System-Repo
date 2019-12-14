@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication.Models.Project>
+
+@{
+    ViewData["Title"] = "Projects";
+    Lecturer lecturer = @ViewBag.Lecturer;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Danh sách đồ án giảng viên theo dõi</h4>
+                <p class="card-category">
+                    <dl class="row">
+                        <dt class="col-2">
+                            Tên giảng viên:
+                        </dt>
+                        <dd class="col-10">
+                            @lecturer.ApplicationUser.LastName @lecturer.ApplicationUser.FirstName
+                        </dd>
+                    </dl>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProjectType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreatedDate)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProjectType.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                                </td>
+                                <td class="td-actions text-right">
+                                    <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" class="btn btn-info" title="Xem chi tiết">
+                                        <i class="material-icons">info</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
