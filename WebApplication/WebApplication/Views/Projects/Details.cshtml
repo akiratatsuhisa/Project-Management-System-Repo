@@ -32,23 +32,6 @@
             <div class="tab-content">
                 <!--Tổng quan-->
                 <div class="tab-pane active" id="list-home">
-                    <h3 class="info-title">Thông tin</h3>
-
-                    <dl class="row">
-                        <dt class="col-md-2">
-                            @Html.DisplayNameFor(model => model.LecturerId):
-                        </dt>
-                        <dd class="col-md-10">
-                            @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
-                        </dd>
-                        <dt class="col-md-2">
-                            @Html.DisplayNameFor(model => model.Description):
-                        </dt>
-                        <dd class="col-md-10">
-                            @Html.DisplayFor(model => model.Description)
-                        </dd>
-                    </dl>
-                    <hr />
                     <h3 class="info-title">Thành viên</h3>
                     <dl class="row">
                         @foreach (ProjectMember item in ViewBag.ProjectMembers)
@@ -66,6 +49,23 @@
                                 @item.Student.StudentCode
                             </dd>
                         }
+                    </dl>
+
+                    <hr />
+                    <h3 class="info-title">Thông tin</h3>
+                    <dl class="row">
+                        <dt class="col-md-2">
+                            @Html.DisplayNameFor(model => model.LecturerId):
+                        </dt>
+                        <dd class="col-md-10">
+                            @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+                        </dd>
+                        <dt class="col-md-2">
+                            @Html.DisplayNameFor(model => model.Description):
+                        </dt>
+                        <dd class="col-md-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
                     </dl>
                 </div>
                 <!--Tuần-->

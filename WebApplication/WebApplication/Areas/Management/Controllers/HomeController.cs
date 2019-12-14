@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication.Areas.Management.Controllers
 {
-    [Authorize(Roles = "Employee")]
     [Area("Management")]
+    [Authorize(Roles = "Employee")]
     public class HomeController : Controller
     {
         public IActionResult Index()
