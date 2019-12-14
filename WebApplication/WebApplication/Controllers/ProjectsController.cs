@@ -22,27 +22,38 @@ namespace WebApplication.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var studentId = _userManager.GetUserId(User);
-            ViewBag.Student = _context.Students.Include(s => s.ApplicationUser).First(s => s.StudentId == studentId);
-            return View(_context.Projects
-                            .Include(p => p.ProjectMembers)
-                            .Where(p => p.ProjectMembers.Where(pm => pm.StudentId == studentId).Count() == 1)
-                            .Include(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)
-                            .Include(p => p.ProjectType));
+            ViewBag.Student = await _context.Students
+                .Include(s => s.ApplicationUser)
+                .FirstAsync(s => s.StudentId == studentId);
+            return View(_context.ProjectMembers
+                        .Where(pm => pm.StudentId == studentId)
+                        .Include(pm => pm.Project)
+                        .ThenInclude(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)
+                        .Include(pm => pm.Project)
+                        .ThenInclude(p => p.ProjectType)
+                        .Select(pm => pm.Project)
+                        );
         }
 
         public async Task<IActionResult> Details(int id)
         {
             var studentId = _userManager.GetUserId(User);
-            var result = await _context.ProjectMembers.FirstOrDefaultAsync(pm => pm.StudentId == studentId && pm.ProjectId == id);
-            if (result == null)
+            var projectMember = await _context.ProjectMembers
+                .FirstOrDefaultAsync(pm => pm.StudentId == studentId && pm.ProjectId == id);
+
+            if (projectMember == null)
             {
                 return NotFound();
             }
-            var projectId = result.ProjectId;
-            ViewBag.ProjectMembers = _context.ProjectMembers.Where(pm => pm.ProjectId == projectId).Include(pm => pm.Student).ThenInclude(s => s.ApplicationUser);
+
+            var projectId = projectMember.ProjectId;
+
+            ViewBag.ProjectMembers = _context.ProjectMembers
+                .Where(pm => pm.ProjectId == projectId)
+                .Include(pm => pm.Student).ThenInclude(s => s.ApplicationUser);
 
             //Test
             if (_context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).Count() == 0)
@@ -51,12 +62,21 @@ namespace WebApplication.Controllers
                 for (var i = 1; i < 11; i++)
                 {
                     dateTimeNow = dateTimeNow.AddDays(7);
-                    _context.ProjectSchedules.Add(new ProjectSchedule { ProjectId = projectId, Name = $"Nhiệm vụ tuần {i}", ExpiredDate = dateTimeNow });
+                    _context.ProjectSchedules.Add(new ProjectSchedule
+                    {
+                        ProjectId = projectId,
+                        Name = $"Nhiệm vụ tuần {i}",
+                        ExpiredDate = dateTimeNow
+                    });
                 }
                 await _context.SaveChangesAsync();
             }
 
-            ViewBag.ProjectSchedules = _context.ProjectSchedules.Where(ps => ps.ProjectId == projectId).OrderBy(ps => ps.ExpiredDate).ToList();
+            ViewBag.ProjectSchedules = _context.ProjectSchedules
+                .Where(ps => ps.ProjectId == projectId)
+                .OrderBy(ps => ps.ExpiredDate)
+                .ToList();
+
             return View(await _context.Projects
                     .Include(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)
                     .Include(p => p.ProjectType)
@@ -81,11 +101,11 @@ namespace WebApplication.Controllers
         private bool IsValidReport(ProjectScheduleReport projectScheduleReport, string studentId)
         {
             var projectSchedule = _context.ProjectSchedules.Find(projectScheduleReport.ProjectScheduleId);
-            if(projectSchedule == null)
+            if (projectSchedule == null)
             {
                 return false;
             }
-            if( projectSchedule.ExpiredDate.Date < DateTime.Now.Date)
+            if (projectSchedule.ExpiredDate.Date < DateTime.Now.Date)
             {
                 return false;
             }
