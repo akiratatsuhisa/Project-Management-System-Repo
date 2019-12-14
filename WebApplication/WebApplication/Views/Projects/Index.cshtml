@@ -61,8 +61,8 @@
                             <td>
                                 @item.Lecturer.ApplicationUser.LastName @item.Lecturer.ApplicationUser.FirstName
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                            <td class="@item.StatusViewModel.TextClassName">
+                                @Html.DisplayFor(modelItem => item.StatusViewModel.Name)
                             </td>
                             <td>
                                 <a asp-action="Details" asp-route-id="@item.Id">Xem chi tiết</a>

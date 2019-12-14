@@ -47,28 +47,28 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Title)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProjectType.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                                </td>
-                                <td class="td-actions text-right">
-                                    <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" class="btn btn-info" title="Xem chi tiết">
-                                        <i class="material-icons">info</i>
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectType.Name)
+                                    </td>
+                                    <td class="@item.StatusViewModel.TextClassName">
+                                        @Html.DisplayFor(modelItem => item.StatusViewModel.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <a asp-action="Details" asp-route-id="@item.Id" rel="tooltip" class="btn btn-info" title="Xem chi tiết">
+                                            <i class="material-icons">info</i>
+                                        </a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

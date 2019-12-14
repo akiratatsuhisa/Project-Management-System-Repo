@@ -56,10 +56,34 @@
                         <h3 class="info-title">Thông tin</h3>
                         <dl class="row">
                             <dt class="col-md-2">
-                                @Html.DisplayNameFor(model => model.LecturerId):
+                                @Html.DisplayNameFor(model => model.Title):
+                            </dt>
+                            <dd class="col-md-10">
+                                @Html.DisplayFor(model => model.Title)
+                            </dd>
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.ProjectType):
+                            </dt>
+                            <dd class="col-md-10">
+                                @Html.DisplayFor(model => model.ProjectType.Name)
+                            </dd>
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.Lecturer):
                             </dt>
                             <dd class="col-md-10">
                                 @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+                            </dd>
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.Status):
+                            </dt>
+                            <dd class="col-md-10 @Model.StatusViewModel.TextClassName">
+                                @Html.DisplayFor(model => model.StatusViewModel.Name)
+                            </dd>
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.CreatedDate):
+                            </dt>
+                            <dd class="col-md-10">
+                                @Html.DisplayFor(model => model.CreatedDate.Date)
                             </dd>
                             <dt class="col-md-2">
                                 @Html.DisplayNameFor(model => model.Description):
