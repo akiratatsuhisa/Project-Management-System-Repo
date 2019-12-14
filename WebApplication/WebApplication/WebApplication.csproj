@@ -434,6 +434,7 @@
     <None Include="wwwroot\management-assets\scss\material-dashboard\_input-group.scss" />
     <None Include="wwwroot\management-assets\scss\material-dashboard\_misc.scss" />
     <None Include="wwwroot\management-assets\scss\material-dashboard\_mixins.scss" />
+    <None Include="wwwroot\management-assets\scss\material-dashboard\_nav.scss" />
     <None Include="wwwroot\management-assets\scss\material-dashboard\_navbar.scss" />
     <None Include="wwwroot\management-assets\scss\material-dashboard\_popover.scss" />
     <None Include="wwwroot\management-assets\scss\material-dashboard\_popups.scss" />

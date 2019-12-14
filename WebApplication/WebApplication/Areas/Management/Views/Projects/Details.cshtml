@@ -2,49 +2,191 @@
 
 @{
     ViewData["Title"] = "Details";
+    List<ProjectSchedule> projectSchedules = ViewBag.ProjectSchedules;
 }
 
-<h1>Details</h1>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-pills nav-pills-primary flex-column">
+                    <!--Tổng quan-->
+                    <li class="nav-item"><a class="nav-link active" href="#list-home" data-toggle="tab">Tổng quan</a></li>
+                    <!--Tiến trình-->
+                    @for (var i = 0; i < projectSchedules.Count; i++)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="#list-week-@(i+1)" data-toggle="tab">Tuần @(i + 1)</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Lecturer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lecturer.LecturerId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProjectType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProjectType.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-    </dl>
+    <div class="col-md-9">
+        <div class="tab-content">
+            <!--Tổng quan-->
+            <div class="tab-pane active" id="list-home">
+                <div class="card">
+                    <div class="card-header card-header-text card-header-primary">
+                        <div class="card-text">
+                            <h4 class="card-title">Tổng quan</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="info-title">Thành viên</h3>
+                        <dl class="row">
+                            @foreach (ProjectMember item in ViewBag.ProjectMembers)
+                            {
+                                <dt class="col-md-2">
+                                    Tên:
+                                </dt>
+                                <dd class="col-md-10">
+                                    @item.Student.ApplicationUser.LastName @item.Student.ApplicationUser.FirstName
+                                </dd>
+                                <dt class="col-md-2">
+                                    MSSV:
+                                </dt>
+                                <dd class="col-md-10">
+                                    @item.Student.StudentCode
+                                </dd>
+                            }
+                        </dl>
+
+                        <hr />
+                        <h3 class="info-title">Thông tin</h3>
+                        <dl class="row">
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.LecturerId):
+                            </dt>
+                            <dd class="col-md-10">
+                                @Model.Lecturer.ApplicationUser.LastName  @Model.Lecturer.ApplicationUser.FirstName
+                            </dd>
+                            <dt class="col-md-2">
+                                @Html.DisplayNameFor(model => model.Description):
+                            </dt>
+                            <dd class="col-md-10">
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!--Tuần-->
+            <!--Tiến trình-->
+            @for (var i = 0; i < projectSchedules.Count; i++)
+            {
+                <div class="tab-pane" id="list-week-@(i+1)">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-pills nav-pills-primary nav-pills-icons" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#demand-@(i+1)" role="tab" data-toggle="tab">
+                                        <i class="material-icons">event_note</i>
+                                        Yêu cầu
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#report-@(i+1)" role="tab" data-toggle="tab">
+                                        <i class="material-icons">schedule</i>
+                                        Báo cáo
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#rating-@(i+1)" role="tab" data-toggle="tab">
+                                        <i class="material-icons">format_list_numbered</i>
+                                        Đánh giá
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Yêu cầu-->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="demand-@(i+1)">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-text card-header-primary">
+                                            <div class="card-text">
+                                                <h4 class="card-title">Yêu cầu</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <dl class="row">
+                                                <dt class="col-md-2">
+                                                    Tên tiến trình:
+                                                </dt>
+                                                <dd class="col-md-10">
+                                                    @projectSchedules[i].Name
+                                                </dd>
+                                                <dt class="col-md-2">
+                                                    Ngày hết hạn:
+                                                </dt>
+                                                <dd class="col-md-10">
+                                                    <span class="@(projectSchedules[i].ExpiredDate.Date < DateTime.Now.Date ? "text-danger":"text-success")">
+                                                        @projectSchedules[i].ExpiredDate.ToShortDateString()
+                                                    </span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrWhiteSpace(projectSchedules[i].Description))
+                                {
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header card-header-text card-header-info">
+                                                <div class="card-text">
+                                                    <h4 class="card-title">Mô tả</h4>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                @Html.Raw(projectSchedules[i].Description)
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!--Báo cáo-->
+                        <div class="tab-pane" id="report-@(i+1)">
+                            @await Component.InvokeAsync("ProjectScheduleReports", new { id = projectSchedules[i].Id })
+                        </div>
+                        <!--Đánh giá-->
+                        <div class="tab-pane" id="rating-@(i+1)">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-text card-header-primary">
+                                            <div class="card-text">
+                                                <h4 class="card-title">Đánh giá</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <dl class="row">
+                                                <dt class="col-md-2">
+                                                    Điểm:
+                                                </dt>
+                                                <dd class="col-md-10">
+                                                    @(projectSchedules[i].Rating?.ToString() ?? "Chưa chấm điểm")
+                                                </dd>
+                                                <dt class="col-md-2">
+                                                    Đánh giá:
+                                                </dt>
+                                                <dd class="col-md-10">
+                                                    @Html.Raw(projectSchedules[i].Comment)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
