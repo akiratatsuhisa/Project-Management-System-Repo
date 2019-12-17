@@ -87,6 +87,7 @@ namespace WebApplication.Controllers
                     .FirstAsync(p => p.Id == projectId));
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> CreateNewReport(ProjectScheduleReport projectScheduleReport, int projectId)
         {

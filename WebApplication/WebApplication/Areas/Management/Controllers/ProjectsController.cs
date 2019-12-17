@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using WebApplication.Models;
 namespace WebApplication.Areas.Management.Controllers
 {
     [Area("Management")]
+    [Authorize(Roles = "Lecturer")]
     public class ProjectsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -83,6 +85,54 @@ namespace WebApplication.Areas.Management.Controllers
                     .Include(p => p.Lecturer).ThenInclude(l => l.ApplicationUser)
                     .Include(p => p.ProjectType)
                     .FirstAsync(p => p.Id == projectId));
+        }
+
+        public async Task<IActionResult> EditProjectSchedule(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var result = await _context.ProjectSchedules.FindAsync(id);
+            await _context.Entry(result).Reference("Project").LoadAsync();
+            if (result.Project.LecturerId == getCurrentLecturerId())
+            {
+                return View(result);
+            }
+            return BadRequest();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> EditProjectSchedule(ProjectSchedule projectSchedule)
+        {
+            var result = await _context.ProjectSchedules.FindAsync(projectSchedule.Id);
+            await _context.Entry(result).Reference("Project").LoadAsync();
+            if (result.Project.LecturerId == getCurrentLecturerId())
+            {
+                result.Name = projectSchedule.Name;
+                result.Description = projectSchedule.Description;
+                result.ExpiredDate = projectSchedule.ExpiredDate;
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Details), new { id = result.ProjectId });
+            }
+            return BadRequest();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> EvaluateProjectSchedule(ProjectSchedule projectSchedule)
+        {
+            var result = await _context.ProjectSchedules.FindAsync(projectSchedule.Id);
+            await _context.Entry(result).Reference("Project").LoadAsync();
+            if (result.Project.LecturerId == getCurrentLecturerId())
+            {
+                result.Rating = projectSchedule.Rating;
+                result.Comment = projectSchedule.Comment;
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Details), new { id = result.ProjectId });
+            }
+            return BadRequest();
         }
 
         private string getCurrentLecturerId() => _userManager.GetUserId(User);

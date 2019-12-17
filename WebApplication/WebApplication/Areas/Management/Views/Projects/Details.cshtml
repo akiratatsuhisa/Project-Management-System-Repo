@@ -154,6 +154,7 @@
                                                     </span>
                                                 </dd>
                                             </dl>
+                                            <a asp-action="EditProjectSchedule" asp-route-id="@projectSchedules[i].Id" class="btn btn-outline-success">Sửa yêu cầu</a>
                                         </div>
                                     </div>
                                 </div>
@@ -197,12 +198,38 @@
                                                     @(projectSchedules[i].Rating?.ToString() ?? "Chưa chấm điểm")
                                                 </dd>
                                                 <dt class="col-md-2">
-                                                    Đánh giá:
+                                                    Nhận xét:
                                                 </dt>
                                                 <dd class="col-md-10">
                                                     @Html.Raw(projectSchedules[i].Comment)
                                                 </dd>
                                             </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-text card-header-primary">
+                                            <div class="card-text">
+                                                <h4 class="card-title">Đánh giá</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form asp-action="EvaluateProjectSchedule" method="post">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <input type="hidden" name="Id" value="@projectSchedules[i].Id" />
+                                                <div class="form-group">
+                                                    <label for="Rating">Điểm</label>
+                                                    <input type="number" step="0.5" class="form-control" name="Rating" min="0" max="10" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Comment">Nhận xét</label>
+                                                    <textarea rows="3" type="url" class="form-control" name="Comment"></textarea>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-success">Lưu</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

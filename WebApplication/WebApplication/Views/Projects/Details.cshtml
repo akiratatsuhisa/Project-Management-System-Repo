@@ -206,11 +206,12 @@
                                                     else
                                                     {
                                                         <form asp-action="CreateNewReport" method="post">
-                                                            <input type="hidden" name="ProjectId" value="@Model.Id">
-                                                            <input type="hidden" name="ProjectScheduleId" value="@projectSchedules[i].Id">
+                                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                            <input type="hidden" name="ProjectId" value="@Model.Id" />
+                                                            <input type="hidden" name="ProjectScheduleId" value="@projectSchedules[i].Id" />
                                                             <div class="form-group">
                                                                 <label for="ReportUrl">Report Url</label>
-                                                                <input type="url" class="form-control" name="ReportUrl" placeholder="Nhập Url">
+                                                                <input type="url" class="form-control" name="ReportUrl" placeholder="Nhập Url" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="Note">Ghi chú</label>
@@ -246,7 +247,7 @@
                                                             @(projectSchedules[i].Rating?.ToString() ?? "Chưa chấm điểm")
                                                         </dd>
                                                         <dt class="col-md-2">
-                                                            Đánh giá:
+                                                            Nhận xét:
                                                         </dt>
                                                         <dd class="col-md-10">
                                                             @Html.Raw(projectSchedules[i].Comment)
