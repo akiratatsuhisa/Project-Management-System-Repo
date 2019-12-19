@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
 @*<li class="dropdown nav-item">
         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
             <i class="material-icons">apps</i> Components
@@ -15,10 +14,17 @@
             </a>
         </div>
     </li>*@
-
+@if (User.IsInRole("Employee"))
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="Management">
+            <i class="material-icons">layers</i>Trang quản lý
+        </a>
+    </li>
+}
 <li class="nav-item">
-    <a class="nav-link" asp-action="Index" asp-controller="Projects" onclick="scrollToDownload()">
-        <i class="material-icons">layers</i>Danh sách đồ án
+    <a class="nav-link" asp-action="Index" asp-controller="Projects">
+        <i class="material-icons">view_list</i>Danh sách đồ án
     </a>
 </li>
 <li class="dropdown nav-item">
@@ -29,18 +35,18 @@
         @if (SignInManager.IsSignedIn(User))
         {
             <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
-                <i class="material-icons">layers</i> @User.Identity.Name
+                <i class="material-icons">account_box</i> @User.Identity.Name
             </a>
             <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <a href="javascript: void(0)" onclick="this.parentNode.submit()" class="dropdown-item">
-                    <i class="material-icons">layers</i> Đăng xuất
+                    <i class="material-icons">exit_to_app</i> Đăng xuất
                 </a>
             </form>
         }
         else
         {
             <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">
-                <i class="material-icons">content_paste</i> Đăng nhập
+                <i class="material-icons">input</i> Đăng nhập
             </a>
         }
     </div>

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
+    "C:\\Users\\DELL\\Desktop\\DACN\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
+    "C:\\Users\\DELL\\Desktop\\DACN\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\DACN\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
         "projectName": "WebApplication",
-        "projectPath": "E:\\GitHub\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "packagesPath": "C:\\Users\\AkiraTatsuhisa\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\Project-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\Desktop\\DACN\\Project-Management-System-Repo\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\Desktop\\DACN\\Project-Management-System-Repo\\WebApplication\\WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\AkiraTatsuhisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,24 +84,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -110,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
