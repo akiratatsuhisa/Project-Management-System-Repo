@@ -2677,8 +2677,7 @@
 							"name": "LecturerId",
 							"type": "NVARCHAR",
 							"length": "450",
-							"foreignKey": true,
-							"nullable": true
+							"foreignKey": true
 						},
 						{
 							"_type": "ERDColumn",
